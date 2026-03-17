@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@theme {
+  --color-gold-50: #fbf7f0;
+  --color-gold-100: #f5ebd6;
+  --color-gold-200: #ebd5a8;
+  --color-gold-300: #dec07a;
+  --color-gold-400: #d0a953;
+  --color-gold-500: #b88d3b;
+  --color-gold-600: #9d712e;
+  --color-gold-700: #7e5728;
+  --color-gold-800: #684626;
+  --color-gold-900: #563b24;
+  --color-gold-950: #341e10;
+  --color-neutral-950: #0a0a0a;
+
+  --font-serif: "Montserrat", sans-serif;
+  --font-sans: "Montserrat", sans-serif;
+  
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-slide-up: slide-up 0.8s ease-out forwards;
+  
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Custom Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-neutral-900 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold text-neutral-900;
+  }
+  
+  p, span, div {
+     @apply font-medium;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .text-gold {
+    @apply text-gold-500;
+  }
+  
+  .bg-gold {
+    @apply bg-gold-500;
+  }
+}
