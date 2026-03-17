@@ -1,115 +1,75 @@
 /* eslint-disable no-unused-vars */
-import Button from '../components/ui/Button';
-import SectionTitle from '../components/ui/SectionTitle';
+import { projects } from '../data/projects';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin } from 'lucide-react';
 
-const projects = [
-  {
-    id: 1,
-    title: 'The Aralias',
-    location: 'Golf Course Road, Gurgaon',
-    image:
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop',
-    category: 'Luxury Apartments',
-  },
-  {
-    id: 2,
-    title: 'Magnolias Park',
-    location: 'Sector 42, Gurgaon',
-    image:
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2574&auto=format&fit=crop',
-    category: 'Premium Villas',
-  },
-  {
-    id: 3,
-    title: 'Camellias',
-    location: 'Golf Course Ext, Gurgaon',
-    image:
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2670&auto=format&fit=crop',
-    category: 'Penthouse Collection',
-  },
-  {
-    id: 4,
-    title: 'Vasant Vihar Floors',
-    location: 'Vasant Vihar, South Delhi',
-    image:
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop',
-    category: 'Builder Floors',
-  },
-  {
-    id: 5,
-    title: 'The Crest',
-    location: 'DLF Phase 5, Gurgaon',
-    image:
-      'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2670&auto=format&fit=crop',
-    category: 'Luxury Apartments',
-  },
-  {
-    id: 6,
-    title: 'Sky Mansion',
-    location: 'Chattarpur, South Delhi',
-    image:
-      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2584&auto=format&fit=crop',
-    category: 'Farmhouses',
-  },
-];
-
 const ProjectCard = ({ project, index }) => {
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.6 }}
-      className="group relative h-[400px] cursor-pointer overflow-hidden rounded-sm"
+      className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-xl"
     >
-      {/* Background Image */}
-      <img
-        src={project.image}
-        alt={project.title}
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
+      <Link to={`/projects/${project.slug}`} className="block overflow-hidden">
+        <img
+          src={project.coverImage}
+          alt={project.title}
+          className="h-80 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+      </Link>
 
-      {/* Bottom Gradient Overlay for Text Visibility */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+      <div className="p-8">
+        <span className="bg-gold-50 text-gold-700 mb-4 inline-flex rounded-full px-4 py-1 text-xs font-bold tracking-[0.2em] uppercase">
+          {project.category}
+        </span>
 
-      {/* Content */}
-      <div className="absolute inset-0 flex translate-y-4 flex-col justify-end p-8 transition-transform duration-300 group-hover:translate-y-0">
-        <div className="translate-y-4 transform transition-transform duration-500 group-hover:translate-y-0">
-          <span className="bg-gold-500 mb-3 inline-block rounded-full px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase shadow-md">
-            {project.category}
-          </span>
-          <h3 className="mb-2 font-serif text-2xl text-white">{project.title}</h3>
-          <div className="mb-6 flex items-center text-sm text-neutral-300 opacity-80">
-            <MapPin className="text-gold-500 mr-2 h-4 w-4" />
-            {project.location}
-          </div>
+        <h3 className="mb-3 font-serif text-3xl text-neutral-900">{project.title}</h3>
 
-          <motion.button
-            whileHover={{ x: 5 }}
-            className="flex items-center text-sm font-medium tracking-widest text-white uppercase opacity-0 transition-opacity delay-200 duration-300 group-hover:opacity-100"
-          >
-            View Details <ArrowUpRight className="text-gold-500 ml-2 h-4 w-4" />
-          </motion.button>
+        <div className="mb-5 flex items-center text-sm text-neutral-500">
+          <MapPin className="text-gold-500 mr-2 h-4 w-4" />
+          {project.location}
         </div>
+
+        <p className="text-neutral-600">{project.detailParagraphs.join(' ')}</p>
+
+        <Link
+          to={`/projects/${project.slug}`}
+          className="hover:text-gold-600 mt-6 inline-flex items-center text-sm font-medium tracking-[0.2em] text-neutral-800 uppercase transition-colors"
+        >
+          View Project
+          <ArrowUpRight className="ml-2 h-4 w-4" />
+        </Link>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-white py-12">
+    <section id="projects" className="bg-white py-24">
       <div className="container mx-auto px-6">
-        <SectionTitle title="Featured Residences" subtitle="Our Portfolio" />
+        <div className="mb-14 text-center">
+          <span className="text-gold-500 mb-3 block text-sm tracking-[0.2em] uppercase">
+            Our Portfolio
+          </span>
+          <h2 className="font-serif text-3xl text-neutral-900 md:text-5xl">Featured Residencies</h2>
+          <div className="bg-gold-500 mx-auto mt-6 h-[2px] w-24" />
+          <p className="mx-auto mt-6 max-w-2xl text-neutral-600">
+            Discover our exclusive projects across sector 58, 59, 60 and 54.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
       </div>

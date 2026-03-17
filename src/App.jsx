@@ -1,30 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
+import ScrollToTop from './components/ScrollToTop';
+import Footer from './layout/Footer';
 // Layouts and Sections will be imported here later
 import Navbar from './layout/Navbar';
-import Footer from './layout/Footer';
-import Home from './pages/Home';
 import About from './pages/About';
-import Projects from './pages/Projects';
-import Gallery from './pages/Gallery';
 import Blogs from './pages/Blogs';
-import ScrollToTop from './components/ScrollToTop';
 import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
+import Home from './pages/Home';
+import ProjectDetail from './pages/ProjectDetail';
+import Projects from './pages/Projects';
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-white min-h-screen text-neutral-900 font-sans selection:bg-gold-500/30 selection:text-gold-900 overflow-x-hidden">
+      <div className="selection:bg-gold-500/30 selection:text-gold-900 min-h-screen overflow-x-hidden bg-white font-sans text-neutral-900">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>

@@ -1,5 +1,6 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import { getImageUrl } from '../../lib/media';
+
+import React, { useState } from 'react';
 
 import { Bath, BedDouble, Building2, Sofa, Trees } from 'lucide-react';
 
@@ -7,51 +8,40 @@ const InteractiveSelector = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   // const [animatedOptions, setAnimatedOptions] = useState([]); // Removed unused state
 
-  // Data with Primary (Pexels) and Backup (Unsplash)
   const options = [
     {
       title: 'Grand Living',
       description: 'Expansive living spaces with modern aesthetics',
-      image:
-        'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      backup:
-        'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80',
+      primary: getImageUrl('IMG_5476.webp'),
+      backup: getImageUrl('IMG_5397.webp'),
       icon: <Sofa size={24} className="text-gold-500" />,
     },
     {
       title: 'Luxury Spa',
       description: 'Private wellness sanctuaries in your home',
-      image:
-        'https://images.pexels.com/photos/3288103/pexels-photo-3288103.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      backup:
-        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+      primary: getImageUrl('IMG_5477.webp'),
+      backup: getImageUrl('IMG_5398.webp'),
       icon: <Bath size={24} className="text-gold-500" />,
     },
     {
       title: 'Lush Gardens',
       description: 'Beautifully landscaped outdoor retreats',
-      image:
-        'https://images.pexels.com/photos/872831/pexels-photo-872831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      backup:
-        'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?auto=format&fit=crop&w=1200&q=80',
+      primary: getImageUrl('IMG_5478.webp'),
+      backup: getImageUrl('IMG_5399.webp'),
       icon: <Trees size={24} className="text-gold-500" />,
     },
     {
       title: 'Modern Facades',
       description: 'Striking architectural designs',
-      image:
-        'https://images.pexels.com/photos/323775/pexels-photo-323775.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      backup:
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+      primary: getImageUrl('IMG_5479.webp'),
+      backup: getImageUrl('IMG_5411.webp'),
       icon: <Building2 size={24} className="text-gold-500" />,
     },
     {
       title: 'Serene Suites',
       description: 'Bedrooms designed for ultimate tranquility',
-      image:
-        'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-      backup:
-        'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
+      primary: getImageUrl('IMG_5480.webp'),
+      backup: getImageUrl('IMG_5413.webp'),
       icon: <BedDouble size={24} className="text-gold-500" />,
     },
   ];
@@ -65,7 +55,7 @@ const InteractiveSelector = () => {
   // Removed unused useEffect for animatedOptions
 
   return (
-    <section className="relative flex flex-col items-center justify-center overflow-hidden bg-white pt-20 pb-4 font-sans text-neutral-900">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white py-20 font-sans text-neutral-900">
       <div className="relative z-10 mb-12 w-full max-w-2xl px-6 text-center">
         <h2 className="animate-fadeInTop mb-3 font-serif text-4xl tracking-tight text-neutral-900 delay-300 md:text-5xl">
           Curated <span className="text-gold-500">Moments</span>
@@ -96,7 +86,7 @@ const InteractiveSelector = () => {
           >
             {/* Robust Background Image */}
             <RobustImage
-              primary={option.image}
+              primary={option.primary}
               backup={option.backup}
               alt={option.title}
               isActive={activeIndex === index}
@@ -168,7 +158,7 @@ const RobustImage = ({ primary, backup, alt, isActive }) => {
     return (
       <div className="absolute inset-0 flex items-center justify-center bg-neutral-200">
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-200 to-neutral-300" />
-        <div className="z-10 font-serif text-4xl text-neutral-400 opacity-20">MIL</div>
+        <div className="z-10 font-serif text-4xl text-neutral-400 opacity-20">MLI</div>
       </div>
     );
   }
@@ -182,6 +172,8 @@ const RobustImage = ({ primary, backup, alt, isActive }) => {
         transform: isActive ? 'scale(1.0)' : 'scale(1.1)',
       }}
       onError={handleError}
+      loading="lazy"
+      decoding="async"
     />
   );
 };

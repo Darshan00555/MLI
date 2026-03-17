@@ -1,22 +1,23 @@
 /* eslint-disable no-unused-vars */
 import SectionTitle from '../components/ui/SectionTitle';
+import { getImageUrl } from '../lib/media';
 
 import React from 'react';
 
 import { motion } from 'framer-motion';
 
 const galleryImages = [
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=800&auto=format&fit=crop',
+  getImageUrl('IMG_5490.webp'),
+  getImageUrl('IMG_5491.webp'),
+  getImageUrl('IMG_5492.webp'),
+  getImageUrl('IMG_5493.webp'),
+  getImageUrl('IMG_5495.webp'),
+  getImageUrl('IMG_5496.webp'),
 ];
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="bg-white py-12">
+    <section id="gallery" className="bg-white py-22">
       <div className="container mx-auto px-6">
         <SectionTitle title="Visual Harmony" subtitle="Gallery" />
 

@@ -1,5 +1,5 @@
-import Button from '../components/ui/Button';
 import SectionTitle from '../components/ui/SectionTitle';
+import { getImageUrl } from '../lib/media';
 
 import React from 'react';
 
@@ -9,7 +9,7 @@ const MotionDiv = motion.div;
 
 const About = () => {
   return (
-    <section id="about" className="overflow-hidden bg-white py-12">
+    <section id="about" className="overflow-hidden bg-white py-24">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           {/* Left: Image Composition */}
@@ -22,7 +22,7 @@ const About = () => {
           >
             <div className="relative z-10 overflow-hidden rounded-sm">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop"
+                src={getImageUrl('IMG_5395.webp')}
                 alt="Luxury Building"
                 className="h-[600px] w-full object-cover transition-transform duration-700 hover:scale-105"
               />
@@ -59,9 +59,10 @@ const About = () => {
             />
 
             <p className="mb-6 text-lg leading-relaxed font-light text-neutral-600">
-              At MIL, we believe that a home is more than just a place to live—it's a sanctuary
-              where life's best moments unfold. Since 1992, we have been at the forefront of luxury
-              real estate, creating spaces that blend timeless elegance with modern functionality.
+              At Master Land Infra, we believe that a home is more than just a place to
+              live—it&apos;s a sanctuary where life&apos;s best moments unfold. Since 1992, we have
+              been at the forefront of luxury real estate, creating spaces that blend timeless
+              elegance with modern functionality.
             </p>
 
             <p className="mb-10 text-lg leading-relaxed font-light text-neutral-600">
@@ -73,7 +74,7 @@ const About = () => {
             <ul className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
               {[
                 'Premium Locations',
-                'Sustainable Design',
+                'Premium Construction Quality',
                 'Artistic Architecture',
                 'Vastu Compliant',
               ].map((item, index) => (
@@ -86,10 +87,6 @@ const About = () => {
                 </li>
               ))}
             </ul>
-
-            <Button variant="outline" icon={true}>
-              Read Our Story
-            </Button>
           </MotionDiv>
         </div>
       </div>

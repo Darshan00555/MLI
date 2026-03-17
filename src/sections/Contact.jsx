@@ -1,5 +1,6 @@
 import Button from '../components/ui/Button';
 import SectionTitle from '../components/ui/SectionTitle';
+import { leadFormAction } from '../lib/forms';
 
 import React from 'react';
 
@@ -23,19 +24,28 @@ const ContactInfo = ({ icon, title, content }) => {
     </div>
   );
 };
-const InputField = ({ label, type = 'text', placeholder, rows }) => (
+
+const InputField = ({ label, name, type = 'text', placeholder, rows, defaultValue = '' }) => (
   <div className="mb-6">
-    <label className="mb-2 block text-xs tracking-wider text-neutral-500 uppercase">{label}</label>
+    <label htmlFor={name} className="mb-2 block text-xs tracking-wider text-neutral-500 uppercase">
+      {label}
+    </label>
     {type === 'textarea' ? (
       <textarea
+        id={name}
+        name={name}
         rows={rows || 4}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         className="focus:border-gold-500 w-full resize-none rounded-sm border border-neutral-200 bg-neutral-50 px-4 py-3 text-neutral-900 transition-colors placeholder:text-neutral-400 focus:outline-none"
       />
     ) : (
       <input
+        id={name}
+        name={name}
         type={type}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         className="focus:border-gold-500 w-full rounded-sm border border-neutral-200 bg-neutral-50 px-4 py-3 text-neutral-900 transition-colors placeholder:text-neutral-400 focus:outline-none"
       />
     )}
@@ -44,7 +54,7 @@ const InputField = ({ label, type = 'text', placeholder, rows }) => (
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative overflow-hidden bg-white pt-10 pb-24">
+    <section id="contact" className="relative overflow-hidden bg-white py-24">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 h-full w-1/3 translate-x-20 -skew-x-12 transform bg-neutral-800/20" />
 
@@ -63,14 +73,14 @@ const Contact = () => {
               Let's Discuss Your Dream Home
             </h3>
             <p className="mb-12 max-w-md text-neutral-600">
-              Whether you're looking for a premium apartment, a luxury villa, or have a query about
-              our projects, our team is here to assist you.
+              Whether you are exploring a builder floor, booking a site visit, or need project
+              details, our team is here to assist you.
             </p>
 
             <ContactInfo
               icon={MapPin}
               title="Visit Our Office"
-              content="MIL, Golf Course Road,&#10;Sector 54, Gurgaon, Haryana 122002"
+              content="MLI, Golf Course Road,&#10;Sector 54, Gurgaon, Haryana 122002"
             />
             <ContactInfo
               icon={Phone}
@@ -98,20 +108,26 @@ const Contact = () => {
             className="relative border border-neutral-100 bg-white p-8 shadow-2xl md:p-12"
           >
             <div className="from-gold-500 absolute top-0 left-0 h-1 w-full bg-gradient-to-r to-transparent" />
-            <form>
+            <form action={leadFormAction} method="POST">
+              <input type="hidden" name="source" value="Homepage Contact Section" />
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <InputField label="Name" placeholder="Your Full Name" />
-                <InputField label="Phone" type="tel" placeholder="+91 XXXXX XXXXX" />
+                <InputField label="Name" name="name" placeholder="Your Full Name" />
+                <InputField label="Phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" />
               </div>
-              <InputField label="Email" type="email" placeholder="your@email.com" />
-              <InputField label="Project Interest" placeholder="e.g. The Aralias, Magnolias..." />
+              <InputField label="Email" name="email" type="email" placeholder="your@email.com" />
+              <InputField
+                label="Project Interest"
+                name="project_interest"
+                placeholder="e.g. IREO A1-01"
+              />
               <InputField
                 label="Message"
+                name="message"
                 type="textarea"
                 placeholder="Tell us more about your requirements..."
               />
 
-              <Button variant="primary" className="mt-2 w-full">
+              <Button type="submit" variant="primary" className="mt-2 w-full">
                 Send Message
               </Button>
             </form>

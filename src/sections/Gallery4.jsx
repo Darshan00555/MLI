@@ -1,6 +1,6 @@
- 
 import Button from '../components/ui/Button';
 import { Carousel, CarouselContent, CarouselItem } from '../components/ui/Carousel';
+import { getImageUrl } from '../lib/media';
 
 import React, { useEffect, useState } from 'react';
 
@@ -13,8 +13,7 @@ const galleryItems = [
     description:
       'Experience luxury living in our flagship residential towers, offering panoramic city views and world-class amenities.',
     href: '#',
-    image:
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop',
+    image: getImageUrl('IMG_5497.webp'),
   },
   {
     id: 'villas',
@@ -22,8 +21,7 @@ const galleryItems = [
     description:
       'Exclusive gated community featuring widely spaced villas surrounded by lush orchards and private gardens.',
     href: '#',
-    image:
-      'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1000&auto=format&fit=crop',
+    image: getImageUrl('IMG_5498.webp'),
   },
   {
     id: 'commercial',
@@ -31,8 +29,7 @@ const galleryItems = [
     description:
       'A state-of-the-art commercial hub designed for modern businesses, featuring sustainable architecture and smart offices.',
     href: '#',
-    image:
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop',
+    image: getImageUrl('IMG_5503.webp'),
   },
   {
     id: 'penthouses',
@@ -40,8 +37,7 @@ const galleryItems = [
     description:
       'Serene waterfront living with private docks, expansive terraces, and bespoke interiors for the discerning few.',
     href: '#',
-    image:
-      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000&auto=format&fit=crop',
+    image: getImageUrl('IMG_5504.webp'),
   },
   {
     id: 'sustainable',
@@ -49,8 +45,7 @@ const galleryItems = [
     description:
       'Award-winning sustainable housing project powered entirely by renewable energy with zero-carbon footprint.',
     href: '#',
-    image:
-      'https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1000&auto=format&fit=crop',
+    image: getImageUrl('IMG_5505.webp'),
   },
 ];
 
@@ -58,6 +53,7 @@ const Gallery4 = () => {
   const [carouselApi, setCarouselApi] = useState();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     if (!carouselApi) {
@@ -66,6 +62,7 @@ const Gallery4 = () => {
     const updateSelection = () => {
       setCanScrollPrev(carouselApi.canScrollPrev());
       setCanScrollNext(carouselApi.canScrollNext());
+      setCurrentSlide(carouselApi.selectedScrollSnap());
     };
     updateSelection();
     carouselApi.on('select', updateSelection);
@@ -86,6 +83,26 @@ const Gallery4 = () => {
               Discover how we are redefining modern living with our award-winning architectural
               landmarks.
             </p>
+          </div>
+          <div className="hidden shrink-0 gap-2 md:flex">
+            <Button
+              className="hover:bg-gold-500 hover:border-gold-500 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 p-0 text-neutral-100 transition-all duration-300 hover:text-white"
+              onClick={() => {
+                carouselApi?.scrollPrev();
+              }}
+              disabled={!canScrollPrev}
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <Button
+              className="hover:bg-gold-500 hover:border-gold-500 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 p-0 text-neutral-100 transition-all duration-300 hover:text-white"
+              onClick={() => {
+                carouselApi?.scrollNext();
+              }}
+              disabled={!canScrollNext}
+            >
+              <ArrowRight className="h-5 w-5" />
+            </Button>
           </div>
         </div>
       </div>
@@ -141,23 +158,19 @@ const Gallery4 = () => {
           </CarouselContent>
         </Carousel>
 
-        <div className="mt-8 hidden justify-center gap-3 md:flex">
-          <button
-            onClick={() => carouselApi?.scrollPrev()}
-            disabled={!canScrollPrev}
-            aria-label="Previous"
-            className="group border-gold-500/40 hover:bg-gold-500 hover:border-gold-500 flex h-12 w-12 items-center justify-center rounded-full border bg-white/80 shadow-md backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(180,145,60,0.4)] disabled:cursor-not-allowed disabled:opacity-30"
-          >
-            <ArrowLeft className="text-gold-500 h-5 w-5 transition-all duration-300 group-hover:-translate-x-0.5 group-hover:text-white" />
-          </button>
-          <button
-            onClick={() => carouselApi?.scrollNext()}
-            disabled={!canScrollNext}
-            aria-label="Next"
-            className="group border-gold-500/40 hover:bg-gold-500 hover:border-gold-500 flex h-12 w-12 items-center justify-center rounded-full border bg-white/80 shadow-md backdrop-blur-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(180,145,60,0.4)] disabled:cursor-not-allowed disabled:opacity-30"
-          >
-            <ArrowRight className="text-gold-500 h-5 w-5 transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
-          </button>
+        <div className="mt-8 flex justify-center gap-2">
+          {galleryItems.map((_, index) => (
+            <button
+              key={index}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                currentSlide === index
+                  ? 'bg-gold-500 w-8'
+                  : 'hover:bg-gold-300 w-1.5 bg-neutral-300'
+              }`}
+              onClick={() => carouselApi?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import InteractiveSelector from '../components/ui/InteractiveSelector';
 import { Timeline } from '../components/ui/Timeline';
+import { getImageUrl } from '../lib/media';
 
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -34,7 +35,7 @@ const ImageWithFallback = ({ primarySrc, backupSrc, alt, className, priority = f
         className={`flex flex-col items-center justify-center bg-neutral-200 ${className} min-h-[300px]`}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-200 to-neutral-300" />
-        <div className="z-10 font-serif text-6xl text-neutral-400 opacity-20">MIL</div>
+        <div className="z-10 font-serif text-6xl text-neutral-400 opacity-20">MLI</div>
       </div>
     );
   }
@@ -57,34 +58,28 @@ const ImageWithFallback = ({ primarySrc, backupSrc, alt, className, priority = f
 
 const masonryImages = [
   {
-    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80',
-    backup:
-      'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    src: getImageUrl('IMG_5394.webp'),
+    backup: getImageUrl('IMG_5395.webp'),
   },
   {
-    src: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1000&q=80',
-    backup:
-      'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    src: getImageUrl('IMG_5396.webp'),
+    backup: getImageUrl('IMG_5397.webp'),
   },
   {
-    src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=80',
-    backup:
-      'https://images.pexels.com/photos/221540/pexels-photo-221540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    src: getImageUrl('IMG_5398.webp'),
+    backup: getImageUrl('IMG_5399.webp'),
   },
   {
-    src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfe1?auto=format&fit=crop&w=1000&q=80',
-    backup:
-      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    src: getImageUrl('IMG_5400.webp'),
+    backup: getImageUrl('IMG_5402.webp'),
   },
   {
-    src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80',
-    backup:
-      'https://images.pexels.com/photos/261388/pexels-photo-261388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    src: getImageUrl('IMG_5408.webp'),
+    backup: getImageUrl('IMG_5409.webp'),
   },
   {
-    src: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1000&q=80',
-    backup:
-      'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    src: getImageUrl('IMG_5410.webp'),
+    backup: getImageUrl('IMG_5411.webp'),
   },
 ];
 
@@ -104,8 +99,8 @@ const Gallery = () => {
             {/* Large Left Image - Modern Building Facade */}
             <div className="col-span-2 h-full overflow-hidden rounded-2xl shadow-xl md:col-span-1">
               <ImageWithFallback
-                primarySrc="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"
-                backupSrc="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                primarySrc={getImageUrl('IMG_5402.webp')}
+                backupSrc={getImageUrl('IMG_5394.webp')}
                 alt="Architectural Grandeur 1"
                 className="h-full w-full"
               />
@@ -114,16 +109,16 @@ const Gallery = () => {
             <div className="hidden h-full flex-col gap-4 md:flex">
               <div className="h-1/2 overflow-hidden rounded-2xl shadow-lg">
                 <ImageWithFallback
-                  primarySrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                  backupSrc="https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  primarySrc={getImageUrl('IMG_5498.webp')}
+                  backupSrc={getImageUrl('IMG_5413.webp')}
                   alt="Architectural Grandeur 2"
                   className="h-full w-full"
                 />
               </div>
               <div className="h-1/2 overflow-hidden rounded-2xl shadow-lg">
                 <ImageWithFallback
-                  primarySrc="https://images.unsplash.com/photo-1600566752355-35792bedcfe1?auto=format&fit=crop&w=800&q=80"
-                  backupSrc="https://images.pexels.com/photos/259953/pexels-photo-259953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  primarySrc={getImageUrl('IMG_5503.webp')}
+                  backupSrc={getImageUrl('IMG_5476.webp')}
                   alt="Architectural Grandeur 3"
                   className="h-full w-full"
                 />
@@ -144,24 +139,24 @@ const Gallery = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="h-64 overflow-hidden rounded-xl shadow-md">
               <ImageWithFallback
-                primarySrc="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
-                backupSrc="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                primarySrc={getImageUrl('IMG_5504.webp')}
+                backupSrc={getImageUrl('IMG_5477.webp')}
                 alt="Interior 1"
                 className="h-full w-full"
               />
             </div>
             <div className="h-64 overflow-hidden rounded-xl shadow-md">
               <ImageWithFallback
-                primarySrc="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80"
-                backupSrc="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                primarySrc={getImageUrl('IMG_5505.webp')}
+                backupSrc={getImageUrl('IMG_5478.webp')}
                 alt="Interior 2"
                 className="h-full w-full"
               />
             </div>
             <div className="col-span-1 h-80 overflow-hidden rounded-xl shadow-xl md:col-span-2">
               <ImageWithFallback
-                primarySrc="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80"
-                backupSrc="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                primarySrc={getImageUrl('IMG_5479.webp')}
+                backupSrc={getImageUrl('IMG_5480.webp')}
                 alt="Interior Wide"
                 className="h-full w-full"
               />
@@ -186,8 +181,8 @@ const Gallery = () => {
           {/* REPLACED with House + Garden image, not just nature */}
           <div className="h-96 overflow-hidden rounded-2xl shadow-2xl">
             <ImageWithFallback
-              primarySrc="https://images.unsplash.com/photo-1600596542815-3ad196bb4a7f?auto=format&fit=crop&w=1200&q=80"
-              backupSrc="https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              primarySrc={getImageUrl('IMG_5481.webp')}
+              backupSrc={getImageUrl('IMG_5482.webp')}
               alt="Landscape with Architecture"
               className="h-full w-full"
             />
@@ -207,16 +202,16 @@ const Gallery = () => {
             <div className="h-60 overflow-hidden rounded-lg shadow-lg">
               {/* REPLACED with Modern Balcony/Terrace View */}
               <ImageWithFallback
-                primarySrc="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
-                backupSrc="https://images.pexels.com/photos/259953/pexels-photo-259953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                primarySrc={getImageUrl('IMG_5483.webp')}
+                backupSrc={getImageUrl('IMG_5484.webp')}
                 alt="Panoramic Balcony"
                 className="h-full w-full"
               />
             </div>
             <div className="h-60 overflow-hidden rounded-lg shadow-lg">
               <ImageWithFallback
-                primarySrc="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=800&q=80"
-                backupSrc="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                primarySrc={getImageUrl('IMG_5485.webp')}
+                backupSrc={getImageUrl('IMG_5486.webp')}
                 alt="Modern Facade View"
                 className="h-full w-full"
               />
@@ -257,8 +252,8 @@ const HeroSection = () => {
     <section className="relative flex h-screen items-center justify-center overflow-hidden bg-neutral-900">
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <ImageWithFallback
-          primarySrc="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80"
-          backupSrc="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          primarySrc={getImageUrl('IMG_5496.webp')}
+          backupSrc={getImageUrl('IMG_5497.webp')}
           alt="Gallery Hero"
           className="h-full w-full opacity-70"
           priority={true}
@@ -293,7 +288,7 @@ const HeroSection = () => {
 
 const MasonryGridSection = () => {
   return (
-    <section className="overflow-hidden bg-white pt-12 pb-32">
+    <section className="overflow-hidden bg-white py-32">
       <div className="container mx-auto px-6">
         <div className="mb-20 text-center">
           <h2 className="mb-4 font-serif text-4xl text-neutral-900">The Collection</h2>

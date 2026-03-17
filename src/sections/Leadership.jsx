@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { getImageUrl } from '../lib/media';
+
 import React, { useRef } from 'react';
 
 import { motion, useInView } from 'framer-motion';
@@ -8,22 +10,19 @@ const leaders = [
   {
     name: 'Shri Anil Pandit Ji',
     role: 'Chairman',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+    image: getImageUrl('IMG_5411.webp'),
     quote: "Building legacy is not just about structures, it's about the values we embed in them.",
   },
   {
     name: 'Mr. Bharat Kaushik',
     role: 'Director',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80',
+    image: getImageUrl('IMG_5412.webp'),
     quote: 'Innovation is the heartbeat of modern living. We craft spaces that inspire.',
   },
   {
     name: 'Mr. Vipin Kaushik',
     role: 'Director',
-    image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80',
+    image: getImageUrl('IMG_5413.webp'),
     quote: 'Our commitment to excellence ensures that every project is a masterpiece.',
   },
 ];
@@ -56,7 +55,7 @@ const Leadership = () => {
   };
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-white pt-24 pb-4">
+    <section ref={ref} className="relative overflow-hidden bg-white py-24">
       {/* Decorative Background Elements */}
       <div className="bg-gold-100 absolute top-0 left-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"></div>
       <div className="absolute right-0 bottom-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-neutral-100 opacity-30 blur-3xl"></div>
