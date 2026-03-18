@@ -41,25 +41,25 @@ const Navbar = () => {
       className={cn(
         'fixed top-0 left-0 z-[1000] w-full border-b border-black/5 transition-all duration-300',
         isScrolled
-          ? 'bg-white py-4 shadow-sm md:bg-white/90 md:backdrop-blur-md'
-          : 'bg-white py-6 md:bg-neutral-900/10 md:backdrop-blur-sm'
+          ? 'bg-white py-2 shadow-sm'
+          : 'bg-white py-4 lg:bg-neutral-900/10 lg:backdrop-blur-sm'
       )}
     >
-      <div className="relative z-[1001] container mx-auto flex items-center justify-between px-6">
+      <div className="relative z-[1200] container mx-auto flex items-center justify-between px-6">
         {/* Logo */}
         <Link to="/" className="-ml-4 flex items-center">
           <img
             src={getLogoUrl()}
             alt="MLI Logo"
             className={cn(
-              'h-16 w-auto origin-left scale-125 transition-all duration-300',
+              'h-10 w-auto origin-left scale-110 transition-all duration-300',
               isScrolled || isMobileMenuOpen ? 'brightness-0' : ''
             )}
           />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           {navLinks.map((link) => (
             <div key={link.name} className="group relative">
               <Link
@@ -112,7 +112,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Section */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <a
             href="tel:+91999999XXXX"
             className={cn(
@@ -123,7 +123,7 @@ const Navbar = () => {
             <Phone className="h-5 w-5" />
           </a>
           <Link to="/projects">
-            <Button variant="primary" icon={true}>
+            <Button variant="primary" size="sm" icon={true}>
               Explore Now
             </Button>
           </Link>
@@ -131,7 +131,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={cn('p-2 transition-colors duration-300 md:hidden', 'text-neutral-900')}
+          className={cn('p-2 transition-colors duration-300 lg:hidden', 'text-neutral-900')}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -146,8 +146,8 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 z-[999] flex flex-col items-center justify-start bg-white px-6 pt-24 md:hidden"
-            style={{ backgroundColor: '#ffffff' }}
+            className="fixed inset-0 z-[1100] flex flex-col items-center justify-start bg-white px-6 pt-32 lg:hidden"
+            style={{ backgroundColor: '#ffffff', opacity: 1 }}
           >
             <div className="flex w-full max-w-sm flex-col space-y-6 text-center">
               {navLinks.map((link) => (

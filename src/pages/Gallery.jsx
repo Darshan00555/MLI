@@ -58,28 +58,28 @@ const ImageWithFallback = ({ primarySrc, backupSrc, alt, className, priority = f
 
 const masonryImages = [
   {
-    src: getImageUrl('IMG_5394.webp'),
-    backup: getImageUrl('IMG_5395.webp'),
+    src: getImageUrl('IMG_5487.webp'),
+    backup: getImageUrl('IMG_5488.webp'),
   },
   {
-    src: getImageUrl('IMG_5396.webp'),
-    backup: getImageUrl('IMG_5397.webp'),
+    src: getImageUrl('IMG_5489.webp'),
+    backup: getImageUrl('IMG_5490.webp'),
   },
   {
-    src: getImageUrl('IMG_5398.webp'),
-    backup: getImageUrl('IMG_5399.webp'),
+    src: getImageUrl('IMG_5491.webp'),
+    backup: getImageUrl('IMG_5492.webp'),
   },
   {
-    src: getImageUrl('IMG_5400.webp'),
-    backup: getImageUrl('IMG_5402.webp'),
+    src: getImageUrl('IMG_5493.webp'),
+    backup: getImageUrl('IMG_5494.webp'),
   },
   {
-    src: getImageUrl('IMG_5408.webp'),
-    backup: getImageUrl('IMG_5409.webp'),
+    src: getImageUrl('IMG_5495.webp'),
+    backup: getImageUrl('IMG_5496.webp'),
   },
   {
-    src: getImageUrl('IMG_5410.webp'),
-    backup: getImageUrl('IMG_5411.webp'),
+    src: getImageUrl('IMG_5499.webp'),
+    backup: getImageUrl('IMG_5500.webp'),
   },
 ];
 
@@ -90,35 +90,33 @@ const Gallery = () => {
       title: 'Architectural Grandeur',
       content: (
         <div>
-          <p className="mb-8 text-sm leading-relaxed font-normal text-neutral-800 md:text-base">
+          <p className="mb-10 text-base leading-relaxed font-normal text-neutral-600 md:text-lg">
             Every line, curve, and angle is meticulously engaged to create structures that stand as
             timeless monuments of luxury. Our designs blend modern aesthetics with functional
             brilliance.
           </p>
-          <div className="grid h-[400px] grid-cols-2 gap-4">
-            {/* Large Left Image - Modern Building Facade */}
-            <div className="col-span-2 h-full overflow-hidden rounded-2xl shadow-xl md:col-span-1">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-xl md:aspect-auto md:h-[500px]">
               <ImageWithFallback
-                primarySrc={getImageUrl('IMG_5402.webp')}
+                primarySrc={getImageUrl('IMG_5410.webp')}
                 backupSrc={getImageUrl('IMG_5394.webp')}
                 alt="Architectural Grandeur 1"
                 className="h-full w-full"
               />
             </div>
-            {/* Stacked Right Images - Details & Angles */}
-            <div className="hidden h-full flex-col gap-4 md:flex">
-              <div className="h-1/2 overflow-hidden rounded-2xl shadow-lg">
+            <div className="flex flex-col gap-6">
+              <div className="aspect-video overflow-hidden rounded-2xl shadow-lg">
                 <ImageWithFallback
-                  primarySrc={getImageUrl('IMG_5498.webp')}
-                  backupSrc={getImageUrl('IMG_5413.webp')}
+                  primarySrc={getImageUrl('IMG_5402.webp')}
+                  backupSrc={getImageUrl('IMG_5400.webp')}
                   alt="Architectural Grandeur 2"
                   className="h-full w-full"
                 />
               </div>
-              <div className="h-1/2 overflow-hidden rounded-2xl shadow-lg">
+              <div className="aspect-video overflow-hidden rounded-2xl shadow-lg">
                 <ImageWithFallback
-                  primarySrc={getImageUrl('IMG_5503.webp')}
-                  backupSrc={getImageUrl('IMG_5476.webp')}
+                  primarySrc={getImageUrl('IMG_5411.webp')}
+                  backupSrc={getImageUrl('IMG_5408.webp')}
                   alt="Architectural Grandeur 3"
                   className="h-full w-full"
                 />
@@ -132,32 +130,32 @@ const Gallery = () => {
       title: 'Bespoke Interiors',
       content: (
         <div>
-          <p className="mb-8 text-sm font-normal text-neutral-800 md:text-base">
+          <p className="mb-10 text-base leading-relaxed font-normal text-neutral-600 md:text-lg">
             Interiors that whisper elegance. From Italian marble flooring to handcrafted fixtures,
             every detail is a testament to refined taste.
           </p>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="h-64 overflow-hidden rounded-xl shadow-md">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-md">
               <ImageWithFallback
-                primarySrc={getImageUrl('IMG_5504.webp')}
-                backupSrc={getImageUrl('IMG_5477.webp')}
-                alt="Interior 1"
-                className="h-full w-full"
-              />
-            </div>
-            <div className="h-64 overflow-hidden rounded-xl shadow-md">
-              <ImageWithFallback
-                primarySrc={getImageUrl('IMG_5505.webp')}
+                primarySrc={getImageUrl('IMG_5477.webp')}
                 backupSrc={getImageUrl('IMG_5478.webp')}
-                alt="Interior 2"
+                alt="Interior Detail 1"
                 className="h-full w-full"
               />
             </div>
-            <div className="col-span-1 h-80 overflow-hidden rounded-xl shadow-xl md:col-span-2">
+            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-md">
+              <ImageWithFallback
+                primarySrc={getImageUrl('IMG_5478.webp')}
+                backupSrc={getImageUrl('IMG_5479.webp')}
+                alt="Interior Detail 2"
+                className="h-full w-full"
+              />
+            </div>
+            <div className="col-span-1 aspect-video overflow-hidden rounded-xl shadow-xl md:col-span-2">
               <ImageWithFallback
                 primarySrc={getImageUrl('IMG_5479.webp')}
                 backupSrc={getImageUrl('IMG_5480.webp')}
-                alt="Interior Wide"
+                alt="Interior Wide View"
                 className="h-full w-full"
               />
             </div>
@@ -252,10 +250,10 @@ const HeroSection = () => {
     <section className="relative flex h-screen items-center justify-center overflow-hidden bg-neutral-900">
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <ImageWithFallback
-          primarySrc={getImageUrl('IMG_5496.webp')}
-          backupSrc={getImageUrl('IMG_5497.webp')}
+          primarySrc={getImageUrl('IMG_5476.webp')}
+          backupSrc={getImageUrl('IMG_5395.webp')}
           alt="Gallery Hero"
-          className="h-full w-full opacity-70"
+          className="h-full w-full opacity-60"
           priority={true}
         />
         <div className="absolute inset-0 bg-black/40" />
@@ -267,10 +265,10 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
         >
-          <h1 className="mb-4 font-serif text-6xl tracking-tighter text-white md:text-9xl">
+          <h1 className="mb-4 font-serif text-4xl font-medium tracking-tighter text-white drop-shadow-md sm:text-6xl md:text-8xl lg:text-9xl">
             Visual Poetry
           </h1>
-          <p className="text-gold-400 text-lg font-light tracking-[0.3em] uppercase md:text-xl">
+          <p className="text-gold-400 text-sm font-semibold tracking-[0.3em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] text-shadow-sm sm:text-lg md:text-xl">
             Where Art Meets Architecture
           </p>
         </motion.div>
@@ -278,7 +276,7 @@ const HeroSection = () => {
 
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white"
+        className="absolute bottom-10 left-1/2 z-20 hidden -translate-x-1/2 animate-bounce text-white xl:block"
       >
         <ArrowDown className="h-6 w-6" />
       </motion.div>
@@ -288,9 +286,9 @@ const HeroSection = () => {
 
 const MasonryGridSection = () => {
   return (
-    <section className="overflow-hidden bg-white py-32">
+    <section className="overflow-hidden bg-white py-16 md:py-24">
       <div className="container mx-auto px-6">
-        <div className="mb-20 text-center">
+        <div className="mb-12 text-center">
           <h2 className="mb-4 font-serif text-4xl text-neutral-900">The Collection</h2>
           <div className="bg-gold-500 mx-auto h-1 w-16" />
         </div>

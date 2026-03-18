@@ -54,12 +54,16 @@ const InputField = ({ label, name, type = 'text', placeholder, rows, defaultValu
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative overflow-hidden bg-white py-24">
+    <section id="contact" className="bg-neutral-50 py-16 md:py-24">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 h-full w-1/3 translate-x-20 -skew-x-12 transform bg-neutral-800/20" />
+      {/* <div className="absolute top-0 right-0 h-full w-1/3 translate-x-20 -skew-x-12 transform bg-neutral-800/20" /> */}
 
-      <div className="relative z-10 container mx-auto px-6">
-        <SectionTitle title="Get in Touch" subtitle="Contact Us" />
+      <div className="relative z-10 container mx-auto px-4 md:px-6">
+        <SectionTitle
+          title="Start Your Journey"
+          subtitle="Get in Touch"
+          className="mb-8 md:mb-16"
+        />
 
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           {/* Left: Contact Info */}

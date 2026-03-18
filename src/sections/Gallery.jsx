@@ -17,8 +17,8 @@ const galleryImages = [
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="bg-white py-22">
-      <div className="container mx-auto px-6">
+    <section id="gallery" className="bg-white py-16 md:py-22">
+      <div className="container mx-auto px-4 md:px-6">
         <SectionTitle title="Visual Harmony" subtitle="Gallery" />
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -34,7 +34,7 @@ const Gallery = () => {
               <img
                 src={image}
                 alt={`Gallery ${index + 1}`}
-                className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-110 md:h-80"
+                className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-110 md:h-80"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-neutral-950/0 transition-colors duration-300 group-hover:bg-neutral-950/40">
                 <div className="translate-y-4 transform opacity-0 transition-opacity duration-300 group-hover:translate-y-0 group-hover:opacity-100">

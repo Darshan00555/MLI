@@ -1,10 +1,7 @@
 /* eslint-disable no-unused-vars */
-import {
-  useScroll,
-  useTransform,
-  motion,
-} from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const Timeline = ({ data }) => {
   const ref = useRef(null);
@@ -12,69 +9,74 @@ export const Timeline = ({ data }) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
+    if (!ref.current) return;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        setHeight(entry.target.offsetHeight);
+      }
+    });
+
+    resizeObserver.observe(ref.current);
+
+    return () => resizeObserver.disconnect();
   }, [ref]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 10%", "end 50%"],
+    offset: ['start 10%', 'end 50%'],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div
-      className="w-full bg-white font-sans md:px-10"
-      ref={containerRef}
-    >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-4xl md:text-5xl mb-4 text-neutral-900 max-w-4xl font-serif">
+    <div className="w-full bg-white py-12 font-sans md:py-20" ref={containerRef}>
+      {/* Header Section */}
+      <div className="mx-auto mb-16 max-w-7xl px-4 md:mb-24 md:px-10 lg:pl-48">
+        <h2 className="mb-8 font-serif text-5xl font-medium tracking-tight text-neutral-900 md:text-8xl">
           Journal of Excellence
         </h2>
-        <p className="text-neutral-600 text-sm md:text-base max-w-sm">
-          A visual journey through our defining pillars of luxury and design.
+        <p className="max-w-3xl text-lg leading-relaxed text-neutral-500 md:text-2xl">
+          A visual journey through our defining pillars of luxury, architecture, and bespoke
+          interior design.
         </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      <div ref={ref} className="relative mx-auto max-w-7xl">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
+            className="relative mb-24 flex flex-col pl-20 last:mb-0 md:mb-40 md:pl-40 lg:pl-64"
           >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white flex items-center justify-center border border-neutral-200">
-                <div className="h-4 w-4 rounded-full bg-gold-500 p-2" />
+            {/* Timeline Indicator (Dot) */}
+            <div className="absolute top-2 left-8 z-40 md:top-4 md:left-20 lg:left-32">
+              <div className="flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)] md:h-12 md:w-12">
+                <div className="bg-gold-500 h-4 w-4 rounded-full shadow-inner md:h-5 md:w-5" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-900 font-serif">
-                {item.title}
-              </h3>
             </div>
 
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-900 font-serif">
-                {item.title}
-              </h3>
-              {item.content}
-            </div>
+            {/* Section Title - Always Above Content */}
+            <h3 className="mb-12 font-serif text-3xl leading-tight font-bold text-neutral-900 md:mb-16 md:text-7xl">
+              {item.title}
+            </h3>
+
+            {/* Section Content (Paragraphs & Images) */}
+            <div className="w-full pr-4 md:pr-10 lg:pr-20">{item.content}</div>
           </div>
         ))}
+
+        {/* Vertical Timeline Line */}
         <div
-          style={{
-            height: height + "px",
-          }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-neutral-200"
+          style={{ height: height + 'px' }}
+          className="absolute top-0 left-8 w-[2px] -translate-x-1/2 overflow-hidden bg-neutral-100 md:left-20 lg:left-32"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-gold-500 via-yellow-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="from-gold-500 absolute inset-x-0 top-0 w-[2px] rounded-full bg-gradient-to-b via-yellow-400 to-transparent shadow-[0_0_12px_rgba(234,179,8,0.4)]"
           />
         </div>
       </div>

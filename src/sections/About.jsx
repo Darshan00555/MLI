@@ -9,9 +9,9 @@ const MotionDiv = motion.div;
 
 const About = () => {
   return (
-    <section id="about" className="overflow-hidden bg-white py-24">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+    <section id="about" className="overflow-hidden bg-white py-16 md:py-24">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">
           {/* Left: Image Composition */}
           <MotionDiv
             initial={{ opacity: 0, x: -50 }}
@@ -24,12 +24,12 @@ const About = () => {
               <img
                 src={getImageUrl('IMG_5395.webp')}
                 alt="Luxury Building"
-                className="h-[600px] w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="h-[350px] w-full object-cover transition-transform duration-700 hover:scale-105 md:h-[500px] lg:h-[600px]"
               />
             </div>
             {/* Decorative Elements */}
-            <div className="border-gold-500/30 absolute -top-6 -left-6 z-0 h-32 w-32 border-t-2 border-l-2" />
-            <div className="border-gold-500/30 absolute -right-6 -bottom-6 z-0 h-32 w-32 border-r-2 border-b-2" />
+            <div className="border-gold-500/30 absolute -top-3 -left-3 z-0 h-24 w-24 border-t-2 border-l-2 md:-top-6 md:-left-6 md:h-32 md:w-32" />
+            <div className="border-gold-500/30 absolute -right-3 -bottom-3 z-0 h-24 w-24 border-r-2 border-b-2 md:-right-6 md:-bottom-6 md:h-32 md:w-32" />
 
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}

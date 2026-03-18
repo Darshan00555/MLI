@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Button from '../components/ui/Button';
+import { Dialog, DialogContent, DialogTrigger } from '../components/ui/dialog';
+import VideoPlayer from '../components/ui/video-player';
 import { getImageUrl } from '../lib/media';
 
 import React, { useRef } from 'react';
@@ -38,20 +40,21 @@ const Hero = () => {
           className="h-full w-full"
         >
           <img
-            src={getImageUrl('IMG_5394.webp')}
+            src={getImageUrl('IMG_5496.webp')}
             alt="Luxury Living Room"
             className="h-full w-full object-cover opacity-80 will-change-transform"
             fetchPriority="high"
             decoding="async"
           />
         </motion.div>
-        {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/30 via-transparent to-neutral-900/80" />
-        <div className="absolute inset-0 bg-neutral-900/20" />
+        {/* Cinematic Overlays - Professional Vignette */}
+        <div className="absolute inset-0 bg-neutral-900/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.4)_0%,transparent_20%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/20 via-transparent to-neutral-900/50" />
       </motion.div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pt-24 md:pt-32">
+      <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pt-20 md:pt-32">
         {/* Text Content */}
         <div className="container mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="visible" className="flex flex-col items-center">
@@ -72,7 +75,7 @@ const Hero = () => {
             </div>
 
             {/* Main Heading Mask Reveal */}
-            <h1 className="relative z-20 mb-8 font-serif text-4xl tracking-tight text-white md:text-6xl lg:text-7xl">
+            <h1 className="relative z-20 mb-6 font-serif text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] sm:text-4xl md:mb-8 md:text-5xl lg:text-7xl">
               <div className="overflow-hidden">
                 <motion.span
                   variants={{
@@ -109,7 +112,7 @@ const Hero = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.8 } },
               }}
-              className="mx-auto mb-12 max-w-2xl text-base leading-relaxed font-light text-neutral-200 md:text-lg"
+              className="mx-auto mb-8 max-w-2xl px-4 text-sm leading-relaxed font-medium text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:text-base md:mb-12 md:text-lg lg:px-0"
             >
               Discover thoughtfully designed homes that combine modern architecture, prime location,
               and everyday convenience — crafted for those who expect more from their home.
@@ -145,37 +148,40 @@ const Hero = () => {
         </div>
 
         {/* Extreme Magnetic Play Button - Floating Bottom Right */}
-        <MagneticPlayButton />
+        <Dialog>
+          <DialogTrigger asChild>
+            <MagneticPlayButton />
+          </DialogTrigger>
+          <DialogContent className="overflow-hidden border-none bg-transparent p-0 shadow-none outline-none sm:max-w-5xl">
+            <VideoPlayer src="https://www.youtube.com/watch?v=Get7rqXYrbQ" size="full" autoPlay />
+          </DialogContent>
+        </Dialog>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-2 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 mix-blend-difference"
+        className="absolute bottom-10 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-2 mix-blend-difference xl:flex"
       >
-        <div className="h-10 w-[1px] bg-white/50" />
-        <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Scroll</span>
+        <div className="h-10 w-[1px] bg-white/40" />
+        <span className="text-[10px] font-medium tracking-[0.4em] text-white/50 uppercase">
+          Scroll
+        </span>
       </motion.div>
     </section>
   );
 };
 
-const MagneticPlayButton = () => {
-  const ref = useRef(null);
+const MagneticPlayButton = React.forwardRef(({ ...props }, ref) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
   const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const handleMouseMove = (e) => {
-    if (!ref.current) {
-      return;
-    }
-
     const { clientX, clientY } = e;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     x.set((clientX - (left + width / 2)) * 0.2);
     y.set((clientY - (top + height / 2)) * 0.2);
   };
@@ -186,15 +192,14 @@ const MagneticPlayButton = () => {
   };
 
   return (
-    <motion.a
-      href="https://www.youtube.com/watch?v=Get7rqXYrbQ"
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.button
+      type="button"
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
-      className="group absolute top-1/2 right-6 z-30 hidden -translate-y-1/2 cursor-pointer items-center justify-center xl:flex 2xl:right-12"
+      className="group absolute top-1/2 right-6 z-30 hidden -translate-y-1/2 cursor-pointer items-center justify-center border-none bg-transparent outline-none xl:flex 2xl:right-12"
+      {...props}
     >
       <div className="bg-gold-500/20 absolute inset-0 animate-ping rounded-full opacity-20 duration-[3000ms]" />
       <div className="absolute inset-[-20px] scale-0 rounded-full border border-white/10 transition-transform duration-700 ease-out group-hover:scale-100" />
@@ -209,8 +214,8 @@ const MagneticPlayButton = () => {
           Watch Film
         </span>
       </div>
-    </motion.a>
+    </motion.button>
   );
-};
+});
 
 export default Hero;
