@@ -22,10 +22,13 @@ const About = () => {
           >
             <div className="relative z-10 overflow-hidden rounded-sm">
               <img
-                src={getImageUrl('IMG_5395.webp')}
+                src={getImageUrl('IMG_5413(1).webp')}
                 alt="Luxury Building"
                 className="h-[350px] w-full object-cover transition-transform duration-700 hover:scale-105 md:h-[500px] lg:h-[600px]"
               />
+              <div className="absolute inset-0 bg-neutral-900/20" />
+              <div className="bg-[radial-gradient(circle_at_center,rgba(75, 68, 68, 0.4)_0%,transparent_20%)] absolute inset-0" />
+              <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/20 via-transparent to-neutral-900/50" />
             </div>
             {/* Decorative Elements */}
             <div className="border-gold-500/30 absolute -top-3 -left-3 z-0 h-24 w-24 border-t-2 border-l-2 md:-top-6 md:-left-6 md:h-32 md:w-32" />
