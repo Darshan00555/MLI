@@ -7,7 +7,7 @@ export const projects = [
     title: 'IREO A1-01',
     location: 'Sector 58, Gurgaon',
     category: 'Builder Floors',
-    coverImage: '/Elevation.jpg.jpeg',
+    coverImage: '/Elevation.jpg.webp',
     heroImage: getImageUrl('IMG_5400.webp'),
     modelImage: '/Elevation.jpg.jpeg',
     galleryImages: [
@@ -29,9 +29,9 @@ export const projects = [
     title: 'IREO A1-18',
     location: 'Sector 58, Gurgaon',
     category: 'Builder Floors',
-    coverImage: '/A18 Elevation.jpg',
+    coverImage: '/A18 Elevation.webp',
     heroImage: getImageUrl('IMG_5408.webp'),
-    modelImage: '/A18 Elevation.jpg',
+    modelImage: '/A18 Elevation.webp',
     galleryImages: [
       getImageUrl('IMG_5409.webp'),
       getImageUrl('IMG_5410.webp'),
@@ -51,9 +51,9 @@ export const projects = [
     title: 'Suncity C-85',
     location: 'Sector 54, Gurgaon',
     category: 'Builder Floors',
-    coverImage: '/scene-1.jpg.jpeg',
+    coverImage: '/scene-1.jpg.webp',
     heroImage: getImageUrl('IMG_5411.webp'),
-    modelImage: '/scene-1.jpg.jpeg',
+    modelImage: '/scene-1.jpg.webp',
     galleryImages: [
       getImageUrl('IMG_5412.webp'),
       getImageUrl('IMG_5413.webp'),

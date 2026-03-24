@@ -43,15 +43,15 @@ const Navbar = () => {
         isScrolled ? 'py-2 shadow-lg' : 'py-4'
       )}
     >
-      <div className="relative z-[1200] container mx-auto flex items-center justify-between px-6">
+      <div className="relative z-[1200] container mx-auto flex items-center justify-between px-8">
         {/* Logo */}
-        <Link to="/" className="-ml-4 flex items-center">
+        <Link to="/" className="ml-2 flex items-center">
           <img
             src={getLogoUrl()}
             alt="MLI Logo"
             className={cn(
               'w-auto origin-left transition-all duration-500',
-              isScrolled ? 'h-10' : 'h-14'
+              isScrolled ? 'h-12' : 'h-16'
             )}
           />
         </Link>
