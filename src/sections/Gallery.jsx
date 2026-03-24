@@ -9,10 +9,10 @@ import { motion } from 'framer-motion';
 const galleryImages = [
   getImageUrl('IMG_5490.webp'),
   getImageUrl('IMG_5491.webp'),
-  getImageUrl('IMG_5492.webp'),
+  getImageUrl('IMG_5504(1).webp'),
   getImageUrl('IMG_5493.webp'),
   getImageUrl('IMG_5495.webp'),
-  getImageUrl('IMG_5496.webp'),
+  getImageUrl('IMG_5479(1).webp'),
 ];
 
 const Gallery = () => {

@@ -138,23 +138,23 @@ const Gallery = () => {
             <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-md">
               <ImageWithFallback
                 primarySrc={getImageUrl('IMG_5477.webp')}
-                backupSrc={getImageUrl('IMG_5478.webp')}
+                backupSrc={getImageUrl('IMG_5477.webp')}
                 alt="Interior Detail 1"
                 className="h-full w-full"
               />
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-md">
               <ImageWithFallback
-                primarySrc={getImageUrl('IMG_5478.webp')}
-                backupSrc={getImageUrl('IMG_5479.webp')}
+                primarySrc={getImageUrl('IMG_5481.webp')}
+                backupSrc={getImageUrl('IMG_5478.webp')}
                 alt="Interior Detail 2"
                 className="h-full w-full"
               />
             </div>
             <div className="col-span-1 aspect-video overflow-hidden rounded-xl shadow-xl md:col-span-2">
               <ImageWithFallback
-                primarySrc={getImageUrl('IMG_5479.webp')}
-                backupSrc={getImageUrl('IMG_5480.webp')}
+                primarySrc={getImageUrl('IMG_5482.webp')}
+                backupSrc={getImageUrl('IMG_5483.webp')}
                 alt="Interior Wide View"
                 className="h-full w-full"
               />

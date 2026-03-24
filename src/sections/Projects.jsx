@@ -48,7 +48,7 @@ const ProjectCard = ({ project, index }) => {
           to={`/projects/${project.slug}`}
           className="hover:text-gold-600 mt-4 inline-flex items-center text-xs font-medium tracking-[0.2em] text-neutral-800 uppercase transition-colors md:mt-5 md:text-sm"
         >
-          View Project
+          Book a site visit
           <ArrowUpRight className="ml-1 h-3.5 w-3.5 md:ml-2 md:h-4 md:w-4" />
         </Link>
       </div>
