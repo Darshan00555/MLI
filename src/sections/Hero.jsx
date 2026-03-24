@@ -138,7 +138,7 @@ const Hero = () => {
               <Link to="/contact">
                 <Button
                   variant="outline"
-                  className="w-full min-w-[200px] border-white/30 text-white hover:bg-white/10 sm:w-auto"
+                  className="w-full min-w-[200px] border-white/30 text-white hover:border-white hover:bg-white/10 hover:text-white sm:w-auto"
                 >
                   Book a Site Visit
                 </Button>

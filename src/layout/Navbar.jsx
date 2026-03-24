@@ -39,10 +39,8 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 z-[1000] w-full border-b border-black/5 transition-all duration-300',
-        isScrolled
-          ? 'bg-white py-2 shadow-sm'
-          : 'bg-white py-4 lg:bg-neutral-900/10 lg:backdrop-blur-sm'
+        'fixed top-0 left-0 z-[1000] w-full border-b border-white/10 bg-neutral-900/85 backdrop-blur-sm transition-all duration-300',
+        isScrolled ? 'py-2 shadow-lg' : 'py-4'
       )}
     >
       <div className="relative z-[1200] container mx-auto flex items-center justify-between px-6">
@@ -52,8 +50,8 @@ const Navbar = () => {
             src={getLogoUrl()}
             alt="MLI Logo"
             className={cn(
-              'h-10 w-auto origin-left scale-110 transition-all duration-300',
-              isScrolled || isMobileMenuOpen ? 'brightness-0' : ''
+              'w-auto origin-left transition-all duration-500',
+              isScrolled ? 'h-10' : 'h-14'
             )}
           />
         </Link>
@@ -68,9 +66,7 @@ const Navbar = () => {
                   'relative py-2 text-sm tracking-wider uppercase transition-colors duration-300',
                   isActive(link.path)
                     ? 'text-gold-400 font-medium'
-                    : isScrolled
-                      ? 'hover:text-gold-400 text-neutral-700'
-                      : 'hover:text-gold-500 text-white/90'
+                    : 'hover:text-gold-400 text-white/90'
                 )}
               >
                 {link.name}
@@ -115,10 +111,7 @@ const Navbar = () => {
         <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <a
             href="tel:+91999999XXXX"
-            className={cn(
-              'transition-colors duration-300',
-              isScrolled ? 'hover:text-gold-600 text-neutral-700' : 'hover:text-gold-500 text-white'
-            )}
+            className="hover:text-gold-400 text-white transition-colors duration-300"
           >
             <Phone className="h-5 w-5" />
           </a>
