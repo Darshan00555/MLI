@@ -75,7 +75,7 @@ const Hero = () => {
             </div>
 
             {/* Main Heading Mask Reveal */}
-            <h1 className="relative z-20 mb-6 max-w-4xl font-serif text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
+            <h1 className="relative z-20 mb-1 max-w-4xl font-serif text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
               <div className="overflow-hidden">
                 <motion.span
                   variants={{
