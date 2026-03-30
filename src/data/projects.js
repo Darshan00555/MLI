@@ -67,6 +67,28 @@ export const projects = [
     ],
     ctaLabel: 'Book a Site Visit',
   },
+  {
+    id: 4,
+    slug: 'ireo-a-1502',
+    title: 'IREO A-1502',
+    location: 'Sector 58, Gurgaon',
+    category: 'Builder Floors',
+    coverImage: '/project_pic/A-1502/A_1502_Elevation_01.jpg.webp',
+    heroImage: '/project_pic/A-1502/A_1502_Elevation_01.jpg.webp',
+    modelImage: '/project_pic/A-1502/A_1502_Elevation_02.jpg.webp',
+    floorPlanPdf: '/project_pic/A-1502/A-15-FURNITURE PLAN-CIVIL PLAN.pdf',
+    galleryImages: [
+      '/project_pic/A-1502/A_1502_Elevation_01.jpg.webp',
+      '/project_pic/A-1502/A_1502_Elevation_02.jpg.webp',
+    ],
+    description:
+      'A thoughtfully designed builder floor in the prestigious Ireo Plots, Sector 58, featuring a spacious layout, premium finishes, and private gated living.',
+    detailParagraphs: [
+      'A thoughtfully designed builder floor in the prestigious Ireo Plots, Sector 58, featuring a spacious layout, premium finishes, and private gated living.',
+      'An ideal blend of modern architecture and everyday comfort in one of Gurgaon’s most sought-after addresses.',
+    ],
+    ctaLabel: 'Book a Site Visit',
+  },
 ];
 
 export const getProjectBySlug = (slug) => projects.find((project) => project.slug === slug);

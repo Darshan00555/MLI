@@ -106,6 +106,21 @@ const ProjectDetail = () => {
               decoding="async"
             />
           </div>
+
+          {/* Floor Plan PDF Download — shown only if available */}
+          {project.floorPlanPdf && (
+            <div className="mt-6 flex justify-center">
+              <a
+                href={project.floorPlanPdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gold-500 hover:bg-gold-600 inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold tracking-wider text-white uppercase transition-colors"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Download Floor Plan (PDF)
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
