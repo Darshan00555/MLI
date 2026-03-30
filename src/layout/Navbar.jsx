@@ -37,132 +37,194 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 z-[1000] w-full border-b border-white/10 bg-neutral-900/85 backdrop-blur-sm transition-all duration-300',
-        isScrolled ? 'py-2 shadow-lg' : 'py-4'
-      )}
-    >
-      <div className="relative z-[1200] container mx-auto flex items-center justify-between px-8">
-        {/* Logo */}
-        <Link to="/" className="ml-2 flex items-center">
-          <img
-            src={getLogoUrl()}
-            alt="MLI Logo"
-            className={cn(
-              'w-auto origin-left transition-all duration-500',
-              isScrolled ? 'h-12' : 'h-16'
-            )}
-          />
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
-          {navLinks.map((link) => (
-            <div key={link.name} className="group relative">
-              <Link
-                to={link.path}
-                className={cn(
-                  'relative py-2 text-sm tracking-wider uppercase transition-colors duration-300',
-                  isActive(link.path)
-                    ? 'text-gold-400 font-medium'
-                    : 'hover:text-gold-400 text-white/90'
-                )}
-              >
-                {link.name}
-                <span
-                  className={cn(
-                    'bg-gold-500 absolute bottom-0 left-0 h-[1px] w-full origin-left transform transition-transform duration-300',
-                    isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  )}
-                />
-              </Link>
-
-              {/* Dropdown for Projects (Placeholder) */}
-              {link.hasDropdown && (
-                <div className="invisible absolute top-full left-0 mt-2 w-48 translate-y-2 transform rounded-sm border border-neutral-100 bg-white opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                  <div className="py-2">
-                    <Link
-                      to="/projects/ireo-a1-01"
-                      className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
-                    >
-                      IREO A1-01
-                    </Link>
-                    <Link
-                      to="/projects/ireo-a1-18"
-                      className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
-                    >
-                      IREO A1-18
-                    </Link>
-                    <Link
-                      to="/projects/suncity-c-85"
-                      className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
-                    >
-                      Suncity C-85
-                    </Link>
-                  </div>
-                </div>
+    <>
+      {/* ── Main Navbar ── */}
+      <nav
+        className={cn(
+          'fixed top-0 left-0 z-[1000] w-full border-b border-white/10 bg-neutral-900/85 backdrop-blur-sm transition-all duration-300',
+          isScrolled ? 'py-2 shadow-lg' : 'py-4'
+        )}
+      >
+        <div className="relative z-[1200] container mx-auto flex items-center justify-between px-8">
+          {/* Logo */}
+          <Link to="/" className="ml-2 flex items-center">
+            <img
+              src={getLogoUrl()}
+              alt="MLI Logo"
+              className={cn(
+                'w-auto origin-left transition-all duration-500',
+                isScrolled ? 'h-12' : 'h-16'
               )}
-            </div>
-          ))}
-        </div>
-
-        {/* Right Section */}
-        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
-          <a
-            href="tel:+91999999XXXX"
-            className="hover:text-gold-400 text-white transition-colors duration-300"
-          >
-            <Phone className="h-5 w-5" />
-          </a>
-          <Link to="/projects">
-            <Button variant="primary" size="sm" icon={true}>
-              Explore Now
-            </Button>
+            />
           </Link>
+
+          {/* Desktop Menu */}
+          <div className="hidden items-center gap-4 lg:flex xl:gap-6">
+            {navLinks.map((link) => (
+              <div key={link.name} className="group relative">
+                <Link
+                  to={link.path}
+                  className={cn(
+                    'relative py-2 text-sm tracking-wider uppercase transition-colors duration-300',
+                    isActive(link.path)
+                      ? 'text-gold-400 font-medium'
+                      : 'hover:text-gold-400 text-white/90'
+                  )}
+                >
+                  {link.name}
+                  <span
+                    className={cn(
+                      'bg-gold-500 absolute bottom-0 left-0 h-[1px] w-full origin-left transform transition-transform duration-300',
+                      isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    )}
+                  />
+                </Link>
+
+                {/* Dropdown for Projects */}
+                {link.hasDropdown && (
+                  <div className="invisible absolute top-full left-0 mt-2 w-48 translate-y-2 transform rounded-sm border border-neutral-100 bg-white opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="py-2">
+                      <Link
+                        to="/projects/ireo-a1-01"
+                        className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
+                      >
+                        IREO A1-01
+                      </Link>
+                      <Link
+                        to="/projects/ireo-a1-18"
+                        className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
+                      >
+                        IREO A1-18
+                      </Link>
+                      <Link
+                        to="/projects/suncity-c-85"
+                        className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
+                      >
+                        Suncity C-85
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Section - Desktop */}
+          <div className="hidden items-center gap-4 lg:flex xl:gap-6">
+            <a
+              href="tel:+91999999XXXX"
+              className="hover:text-gold-400 text-white transition-colors duration-300"
+            >
+              <Phone className="h-5 w-5" />
+            </a>
+            <Link to="/projects">
+              <Button variant="primary" size="sm" icon={true}>
+                Explore Now
+              </Button>
+            </Link>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            className="p-2 text-white transition-colors duration-300 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className={cn('p-2 transition-colors duration-300 lg:hidden', 'text-neutral-900')}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
+      {/* ── Mobile Drawer (sibling to nav, NOT inside it) ── */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 z-[1100] flex flex-col items-center justify-start bg-white px-6 pt-32 lg:hidden"
-            style={{ backgroundColor: '#ffffff', opacity: 1 }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 1100,
+              backgroundColor: '#111827',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              paddingTop: '6rem',
+              paddingLeft: '1.5rem',
+              paddingRight: '1.5rem',
+              overflowY: 'auto',
+            }}
           >
-            <div className="flex w-full max-w-sm flex-col space-y-6 text-center">
+            {/* Close button inside drawer */}
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '1.25rem',
+                right: '1.5rem',
+                color: '#ffffff',
+                background: 'none',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '0.375rem',
+                padding: '0.375rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              aria-label="Close menu"
+            >
+              <X style={{ width: '1.5rem', height: '1.5rem' }} />
+            </button>
+
+            {/* Nav Links */}
+            <div
+              style={{
+                width: '100%',
+                maxWidth: '24rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0',
+                textAlign: 'center',
+              }}
+            >
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="hover:text-gold-600 border-b border-neutral-100 pb-4 font-serif text-2xl text-neutral-800 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    display: 'block',
+                    padding: '1rem 0',
+                    borderBottom: '1px solid rgba(255,255,255,0.12)',
+                    fontSize: '1.375rem',
+                    fontFamily: 'Georgia, serif',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    letterSpacing: '0.05em',
+                    transition: 'color 0.2s',
+                  }}
                 >
                   {link.name}
                 </Link>
               ))}
-              <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="primary" className="mt-8 w-full">
-                  Explore Now
-                </Button>
-              </Link>
+
+              {/* CTA Button */}
+              <div style={{ marginTop: '2rem' }}>
+                <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="primary" className="w-full">
+                    Explore Now
+                  </Button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 

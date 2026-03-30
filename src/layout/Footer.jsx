@@ -4,7 +4,7 @@ import { getLogoUrl } from '../lib/media';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { ArrowRight, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { ArrowRight, Instagram } from 'lucide-react';
 
 // import { cn } from '../lib/utils2'; // Removed unused cn
 
@@ -37,17 +37,14 @@ const Footer = () => {
           {/* Column 1: Brand */}
           <div>
             <div className="mb-6 flex items-center">
-              <img src={getLogoUrl()} alt="MLI Logo" className="h-[5rem] w-auto" />
+              <img src="Vectorfile.svg" alt="MLI Logo" className="h-[5rem] w-auto" />
             </div>
             <p className="mb-6 text-sm leading-relaxed text-neutral-600">
               Pioneering luxury real estate with a commitment to quality, innovation, and timeless
               design.
             </p>
             <div className="flex space-x-4">
-              <SocialLink icon={Facebook} href="#" />
               <SocialLink icon={Instagram} href="#" />
-              <SocialLink icon={Linkedin} href="#" />
-              <SocialLink icon={Twitter} href="#" />
             </div>
           </div>
 
