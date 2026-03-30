@@ -11,7 +11,7 @@ import { ArrowRight, Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 
 const ContactHeader = () => {
   return (
-    <section className="relative flex h-[40vh] items-center justify-center overflow-hidden bg-neutral-900 md:h-[50vh]">
+    <section className="relative flex h-20 items-center justify-center overflow-hidden bg-neutral-900 md:h-[40vh]">
       {/* Abstract Background */}
       <div className="absolute inset-0 opacity-20">
         <div className="bg-gold-500 absolute top-0 right-0 h-[500px] w-[500px] animate-pulse rounded-full mix-blend-multiply blur-[128px] filter"></div>
@@ -65,9 +65,9 @@ const FloatingInput = ({ label, name, type = 'text', rows, defaultValue = '' }) 
   const [value, setValue] = useState(defaultValue);
 
   return (
-    <div className="relative mb-8">
+    <div className="relative mb-4">
       <div
-        className={`pointer-events-none absolute left-4 transition-all duration-300 ${isFocused || value ? 'text-gold-600 -top-3 bg-white px-2 text-xs font-bold' : 'top-4 text-sm text-neutral-400'}`}
+        className={`pointer-events-none absolute left-3 transition-all duration-300 ${isFocused || value ? 'text-gold-600 -top-2.5 bg-white px-1.5 text-[10px] font-bold' : 'top-2.5 text-xs text-neutral-400'}`}
       >
         {label}
       </div>
@@ -79,7 +79,7 @@ const FloatingInput = ({ label, name, type = 'text', rows, defaultValue = '' }) 
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full resize-none rounded-lg border-2 bg-transparent px-6 py-4 text-neutral-900 transition-colors duration-300 focus:outline-none ${isFocused ? 'border-gold-500' : 'border-neutral-200 hover:border-neutral-300'}`}
+          className={`w-full resize-none rounded-md border bg-transparent px-3 py-2 text-sm text-neutral-900 transition-colors duration-300 focus:outline-none ${isFocused ? 'border-gold-500' : 'border-neutral-300 hover:border-neutral-400'}`}
         />
       ) : (
         <input
@@ -89,7 +89,7 @@ const FloatingInput = ({ label, name, type = 'text', rows, defaultValue = '' }) 
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full rounded-lg border-2 bg-transparent px-6 py-4 text-neutral-900 transition-colors duration-300 focus:outline-none ${isFocused ? 'border-gold-500' : 'border-neutral-200 hover:border-neutral-300'}`}
+          className={`w-full rounded-md border bg-transparent px-3 py-2 text-sm text-neutral-900 transition-colors duration-300 focus:outline-none ${isFocused ? 'border-gold-500' : 'border-neutral-300 hover:border-neutral-400'}`}
         />
       )}
     </div>
@@ -122,11 +122,11 @@ const Contact = () => {
     <main className="min-h-screen bg-white">
       <ContactHeader />
 
-      <section className="relative overflow-hidden py-24">
+      <section className="relative overflow-hidden py-4 md:py-16">
         <div className="relative z-10 container mx-auto px-6">
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-            {/* Left Column: Info */}
-            <div className="space-y-12 lg:col-span-5">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+            {/* Left Column: Info — hidden on mobile, shown on lg+ */}
+            <div className="hidden space-y-10 lg:col-span-5 lg:block">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -151,13 +151,13 @@ const Contact = () => {
                 <ContactInfoItem
                   icon={Phone}
                   title="Speak With Us"
-                  content="+91 99999 99999\n+91 88888 88888"
+                  content="+91 98765 43210"
                   delay={0.3}
                 />
                 <ContactInfoItem
                   icon={Mail}
                   title="Email Us"
-                  content="sales@mil.com\ninfo@mil.com"
+                  content="info@masterlandinfra.com"
                   delay={0.4}
                 />
               </div>
@@ -170,13 +170,13 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative overflow-hidden rounded-3xl border border-neutral-100 bg-white p-8 shadow-2xl md:p-12"
+                className="relative overflow-hidden rounded-2xl border border-neutral-100 bg-white p-4 shadow-lg md:p-8"
               >
                 <div className="from-gold-400 to-gold-600 absolute top-0 left-0 h-2 w-full bg-gradient-to-r"></div>
 
                 <form action={leadFormAction} method="POST">
                   <input type="hidden" name="source" value="Dedicated Contact Page" />
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div className="grid grid-cols-2 gap-3">
                     <FloatingInput label="Full Name" name="name" />
                     <FloatingInput label="Phone Number" name="phone" type="tel" />
                   </div>
@@ -186,11 +186,11 @@ const Contact = () => {
                     name="project_interest"
                     defaultValue={selectedProject}
                   />
-                  <FloatingInput label="Message" name="message" type="textarea" rows={5} />
+                  <FloatingInput label="Message" name="message" type="textarea" rows={3} />
 
                   <button
                     type="submit"
-                    className="hover:bg-gold-500 hover:shadow-gold-500/25 group flex w-full items-center justify-center rounded-xl bg-neutral-900 py-5 font-bold tracking-widest text-white uppercase shadow-lg transition-all duration-300 hover:text-neutral-900"
+                    className="hover:bg-gold-500 group mt-1 flex w-full items-center justify-center rounded-lg bg-neutral-900 py-3 text-sm font-bold tracking-widest text-white uppercase transition-all duration-300"
                   >
                     Send Request
                     <ArrowRight className="ml-3 h-5 w-5 transition-transform group-hover:translate-x-1" />

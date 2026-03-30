@@ -56,7 +56,7 @@ const Hero = () => {
       {/* Main Content Container */}
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pt-20 md:pt-32">
         {/* Text Content */}
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-6 text-center xl:pr-36 2xl:pr-24">
           <motion.div initial="hidden" animate="visible" className="flex flex-col items-center">
             {/* Subheading Mask Reveal */}
             <div className="mb-6 overflow-hidden">
@@ -75,7 +75,7 @@ const Hero = () => {
             </div>
 
             {/* Main Heading Mask Reveal */}
-            <h1 className="relative z-20 mb-6 font-serif text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] sm:text-4xl md:mb-8 md:text-5xl lg:text-7xl">
+            <h1 className="relative z-20 mb-6 max-w-4xl font-serif text-3xl tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
               <div className="overflow-hidden">
                 <motion.span
                   variants={{
@@ -101,7 +101,7 @@ const Hero = () => {
                   }}
                   className="text-gold-200 block pb-2 italic"
                 >
-                  Gurgaon’s Premier Locations
+                  Gurgaon's Most Sought-After Locations
                 </motion.span>
               </div>
             </h1>
