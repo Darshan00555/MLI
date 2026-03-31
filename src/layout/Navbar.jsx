@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import Button from '../components/ui/Button';
+import { contactData } from '../data/contact';
 import { getLogoUrl } from '../lib/media';
 import { cn } from '../lib/utils';
 
@@ -112,7 +113,7 @@ const Navbar = () => {
           {/* Right Section - Desktop */}
           <div className="hidden items-center gap-4 lg:flex xl:gap-6">
             <a
-              href="tel:+91999999XXXX"
+              href={`tel:${contactData.phoneRaw}`}
               className="hover:text-gold-400 text-white transition-colors duration-300"
             >
               <Phone className="h-5 w-5" />

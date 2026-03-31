@@ -8,16 +8,17 @@ import { motion } from 'framer-motion';
 
 const galleryImages = [
   getImageUrl('IMG_5490.webp'),
-  getImageUrl('IMG_5491.webp'),
+  getImageUrl('IMG_5477(1).webp'),
   getImageUrl('IMG_5504(1).webp'),
   getImageUrl('IMG_5493.webp'),
   getImageUrl('IMG_5495.webp'),
   getImageUrl('IMG_5479(1).webp'),
+  getImageUrl('IMG_5488.webp'),
 ];
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="bg-white py-16 md:py-22">
+    <section id="gallery" className="bg-white py-10 md:py-22">
       <div className="container mx-auto px-4 md:px-6">
         <SectionTitle title="Visual Harmony" subtitle="Gallery" />
 

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { contactData } from '../data/contact';
 import { leadFormAction } from '../lib/forms';
 
 import React, { useState } from 'react';
@@ -65,9 +66,13 @@ const FloatingInput = ({ label, name, type = 'text', rows, defaultValue = '' }) 
   const [value, setValue] = useState(defaultValue);
 
   return (
-    <div className="relative mb-4">
+    <div className="relative mb-6">
       <div
-        className={`pointer-events-none absolute left-3 transition-all duration-300 ${isFocused || value ? 'text-gold-600 -top-2.5 bg-white px-1.5 text-[10px] font-bold' : 'top-2.5 text-xs text-neutral-400'}`}
+        className={`pointer-events-none absolute left-4 transition-all duration-300 ${
+          isFocused || value
+            ? 'text-gold-600 -top-2.5 left-3 bg-white px-1.5 text-[10px] font-bold'
+            : 'top-3.5 text-sm text-neutral-400'
+        }`}
       >
         {label}
       </div>
@@ -79,7 +84,11 @@ const FloatingInput = ({ label, name, type = 'text', rows, defaultValue = '' }) 
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full resize-none rounded-md border bg-transparent px-3 py-2 text-sm text-neutral-900 transition-colors duration-300 focus:outline-none ${isFocused ? 'border-gold-500' : 'border-neutral-300 hover:border-neutral-400'}`}
+          className={`w-full resize-none rounded-sm border bg-white px-4 py-3.5 text-sm text-neutral-900 transition-all duration-300 focus:outline-none ${
+            isFocused
+              ? 'border-gold-500 ring-gold-500/5 ring-4'
+              : 'border-neutral-200 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] hover:border-neutral-300'
+          }`}
         />
       ) : (
         <input
@@ -89,7 +98,11 @@ const FloatingInput = ({ label, name, type = 'text', rows, defaultValue = '' }) 
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full rounded-md border bg-transparent px-3 py-2 text-sm text-neutral-900 transition-colors duration-300 focus:outline-none ${isFocused ? 'border-gold-500' : 'border-neutral-300 hover:border-neutral-400'}`}
+          className={`w-full rounded-sm border bg-white px-4 py-3.5 text-sm text-neutral-900 transition-all duration-300 focus:outline-none ${
+            isFocused
+              ? 'border-gold-500 ring-gold-500/5 ring-4'
+              : 'border-neutral-200 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] hover:border-neutral-300'
+          }`}
         />
       )}
     </div>
@@ -145,19 +158,19 @@ const Contact = () => {
                 <ContactInfoItem
                   icon={MapPin}
                   title="Corporate Office"
-                  content="MLI Developers, Golf Course Road,\nSector 54, Gurugram, Haryana"
+                  content={contactData.address}
                   delay={0.2}
                 />
                 <ContactInfoItem
                   icon={Phone}
                   title="Speak With Us"
-                  content="+91 98765 43210"
+                  content={contactData.phone}
                   delay={0.3}
                 />
                 <ContactInfoItem
                   icon={Mail}
                   title="Email Us"
-                  content="info@masterlandinfra.com"
+                  content={contactData.email}
                   delay={0.4}
                 />
               </div>
@@ -170,13 +183,15 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative overflow-hidden rounded-2xl border border-neutral-100 bg-white p-4 shadow-lg md:p-8"
+                className="relative overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 shadow-2xl md:p-10"
               >
-                <div className="from-gold-400 to-gold-600 absolute top-0 left-0 h-2 w-full bg-gradient-to-r"></div>
+                <div className="bg-gold-500/10 absolute top-0 left-0 h-1.5 w-full">
+                  <div className="bg-gold-500 h-full w-1/4"></div>
+                </div>
 
                 <form action={leadFormAction} method="POST">
                   <input type="hidden" name="source" value="Dedicated Contact Page" />
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 gap-x-4 md:grid-cols-2">
                     <FloatingInput label="Full Name" name="name" />
                     <FloatingInput label="Phone Number" name="phone" type="tel" />
                   </div>

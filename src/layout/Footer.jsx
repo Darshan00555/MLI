@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { contactData } from '../data/contact';
 import { leadFormAction } from '../lib/forms';
 import { getLogoUrl } from '../lib/media';
 
@@ -92,18 +93,18 @@ const Footer = () => {
               </p>
               <div className="mb-4 space-y-2">
                 <a
-                  href="tel:+919876543210"
+                  href={`tel:${contactData.phoneRaw}`}
                   className="hover:text-gold-600 flex items-center gap-2 text-sm text-neutral-600 transition-colors"
                 >
                   <Phone className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
-                  +91 98765 43210
+                  {contactData.phone}
                 </a>
                 <a
-                  href="mailto:info@masterlandinfra.com"
+                  href={`mailto:${contactData.email}`}
                   className="hover:text-gold-600 flex items-center gap-2 text-sm text-neutral-600 transition-colors"
                 >
                   <Mail className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
-                  info@masterlandinfra.com
+                  {contactData.email}
                 </a>
               </div>
               <SocialLink icon={Instagram} href="#" />

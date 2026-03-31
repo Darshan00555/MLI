@@ -1,5 +1,6 @@
 import Button from '../components/ui/Button';
 import SectionTitle from '../components/ui/SectionTitle';
+import { contactData } from '../data/contact';
 import { leadFormAction } from '../lib/forms';
 
 import React from 'react';
@@ -81,25 +82,13 @@ const Contact = () => {
               details, our team is here to assist you.
             </p>
 
-            <ContactInfo
-              icon={MapPin}
-              title="Visit Our Office"
-              content="MLI, Golf Course Road,&#10;Sector 54, Gurgaon, Haryana 122002"
-            />
-            <ContactInfo
-              icon={Phone}
-              title="Call Us"
-              content="+91 99999 99999&#10;+91 88888 88888"
-            />
-            <ContactInfo
-              icon={Mail}
-              title="Email Us"
-              content="sales@mil.com&#10;info@mil.com"
-            />
+            <ContactInfo icon={MapPin} title="Visit Our Office" content={contactData.address} />
+            <ContactInfo icon={Phone} title="Call Us" content={contactData.phone} />
+            <ContactInfo icon={Mail} title="Email Us" content={contactData.email} />
             <ContactInfo
               icon={Clock}
               title="Operating Hours"
-              content="Mon - Sat: 10:00 AM - 7:00 PM&#10;Sunday: By Appointment"
+              content={contactData.operatingHours}
             />
           </MotionDiv>
 

@@ -1,10 +1,125 @@
 import Button from '../components/ui/Button';
 import { getProjectBySlug } from '../data/projects';
+import { leadFormAction } from '../lib/forms';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 
-import { ExternalLink, MapPin } from 'lucide-react';
+import { Download, ExternalLink, MapPin } from 'lucide-react';
+
+const BrochureForm = ({ projectTitle }) => {
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(leadFormAction, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        // Trigger download
+        const link = document.createElement('a');
+        link.href = '/brochure.pdf';
+        link.download = 'MLI_Brochure.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error('Form submission error:', err);
+      setStatus('error');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <div className="border-gold-200 bg-gold-50 rounded-2xl border p-8 text-center">
+        <div className="bg-gold-500 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full text-white">
+          <Download className="h-6 w-6" />
+        </div>
+        <h3 className="mb-2 font-serif text-2xl text-neutral-900">Thank You!</h3>
+        <p className="text-neutral-600">
+          Your brochure download has started. Our team will contact you shortly.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
+      <p className="text-gold-600 mb-3 text-sm tracking-[0.3em] uppercase">Digital Brochure</p>
+      <h3 className="mb-4 font-serif text-2xl text-neutral-900">Request Project Details</h3>
+      <p className="mb-6 text-sm text-neutral-600">
+        Fill the form below to instantly download the project brochure.
+      </p>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input type="hidden" name="source" value={`Brochure Request - ${projectTitle}`} />
+        <input type="hidden" name="project" value={projectTitle} />
+
+        <div>
+          <input
+            required
+            type="text"
+            name="name"
+            placeholder="Your Full Name"
+            className="focus:border-gold-500 w-full rounded-md border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm transition-colors outline-none"
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <input
+            required
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="focus:border-gold-500 w-full rounded-md border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm transition-colors outline-none"
+          />
+          <input
+            required
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            className="focus:border-gold-500 w-full rounded-md border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm transition-colors outline-none"
+          />
+        </div>
+
+        <button
+          disabled={status === 'loading'}
+          className="bg-gold-500 hover:bg-gold-600 disabled:bg-gold-300 flex w-full items-center justify-center gap-2 rounded-md py-3 font-semibold text-white transition-all"
+        >
+          {status === 'loading' ? (
+            'Preparing Download...'
+          ) : (
+            <>
+              <Download className="h-4 w-4" />
+              Download Brochure
+            </>
+          )}
+        </button>
+
+        {status === 'error' && (
+          <p className="mt-2 text-center text-xs text-red-500">
+            Something went wrong. Please try again.
+          </p>
+        )}
+      </form>
+    </div>
+  );
+};
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -41,7 +156,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="bg-neutral-50 py-20">
         <div className="container mx-auto px-6">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-6">
@@ -61,19 +176,25 @@ const ProjectDetail = () => {
               ))}
             </div>
 
-            <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-8">
-              <p className="text-gold-600 mb-3 text-sm tracking-[0.3em] uppercase">Enquire Now</p>
-              <h3 className="mb-4 font-serif text-2xl text-neutral-900">
-                Schedule a personalized site visit
-              </h3>
-              <p className="mb-8 text-neutral-600">
-                Speak with the team for availability, walkthroughs, and project-specific details.
-              </p>
-              <Link to={`/contact?project=${encodeURIComponent(project.title)}`}>
-                <Button variant="primary" icon={true}>
-                  {project.ctaLabel}
-                </Button>
-              </Link>
+            <div className="space-y-8">
+              {/* Enquire Now Card */}
+              <div className="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
+                <p className="text-gold-600 mb-3 text-sm tracking-[0.3em] uppercase">Enquire Now</p>
+                <h3 className="mb-4 font-serif text-2xl text-neutral-900">
+                  Schedule a personalized site visit
+                </h3>
+                <p className="mb-8 text-neutral-600">
+                  Speak with the team for availability, walkthroughs, and project-specific details.
+                </p>
+                <Link to={`/contact?project=${encodeURIComponent(project.title)}`}>
+                  <Button variant="primary" icon={true}>
+                    {project.ctaLabel}
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Request Brochure Card */}
+              <BrochureForm projectTitle={project.title} />
             </div>
           </div>
         </div>

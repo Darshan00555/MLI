@@ -1,20 +1,19 @@
-/* eslint-disable no-unused-vars */
 import { projects } from '../data/projects';
 
-import React from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { motion } from 'framer-motion';
-import { ArrowUpRight, MapPin } from 'lucide-react';
+import { motion as Motion } from 'framer-motion';
+import { ArrowUpRight, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 
 const ProjectCard = ({ project, index }) => {
   return (
-    <motion.article
+    <Motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.6 }}
-      className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-xl"
+      className="group w-[300px] shrink-0 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-xl sm:w-[380px]"
     >
       <Link to={`/projects/${project.slug}`} className="block overflow-hidden">
         <img
@@ -52,31 +51,85 @@ const ProjectCard = ({ project, index }) => {
           <ArrowUpRight className="ml-1 h-3.5 w-3.5 md:ml-2 md:h-4 md:w-4" />
         </Link>
       </div>
-    </motion.article>
+    </Motion.article>
   );
 };
 
 const Projects = () => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo =
+        direction === 'left' ? scrollLeft - clientWidth / 1.5 : scrollLeft + clientWidth / 1.5;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="projects" className="bg-white py-12 md:py-16">
-      <div className="container mx-auto max-w-[1200px] px-4 md:px-6">
-        <div className="mb-8 text-center md:mb-12">
-          <span className="text-gold-500 mb-2 block text-[10px] tracking-[0.2em] uppercase md:mb-3 md:text-xs">
-            Our Portfolio
-          </span>
-          <h2 className="font-serif text-2xl text-neutral-900 md:text-4xl">Featured Residencies</h2>
-          <div className="bg-gold-500 mx-auto mt-3 h-[1.5px] w-12 md:mt-4 md:h-[2px] md:w-16" />
-          <p className="mx-auto mt-4 max-w-2xl text-sm text-neutral-600 md:mt-5 md:text-base">
-            Discover our exclusive projects across sector 58, 59, 60 and 54.
-          </p>
+    <section id="projects" className="bg-white py-12 md:py-24">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="mb-10 flex flex-col items-center justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+          <div className="text-center md:text-left">
+            <span className="text-gold-500 mb-2 block text-[10px] font-bold tracking-[0.3em] uppercase md:mb-3 md:text-xs">
+              Our Portfolio
+            </span>
+            <h2 className="font-serif text-3xl text-neutral-900 md:text-5xl">
+              Featured Residencies
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm text-neutral-600 md:mt-6 md:text-base">
+              Discover our exclusive projects across sector 58, 59, 60 and 54.
+            </p>
+          </div>
+
+          <div className="flex gap-3">
+            <button
+              onClick={() => scroll('left')}
+              className="group flex h-12 w-12 items-center justify-center rounded-full border border-neutral-200 transition-all hover:border-neutral-900 hover:bg-neutral-900"
+              aria-label="Scroll Left"
+            >
+              <ChevronLeft className="h-5 w-5 text-neutral-600 transition-colors group-hover:text-white" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="group flex h-12 w-12 items-center justify-center rounded-full border border-neutral-200 transition-all hover:border-neutral-900 hover:bg-neutral-900"
+              aria-label="Scroll Right"
+            >
+              <ChevronRight className="h-5 w-5 text-neutral-600 transition-colors group-hover:text-white" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:gap-8">
+        <div
+          ref={scrollRef}
+          className="no-scrollbar flex gap-6 overflow-x-auto scroll-smooth pb-8"
+          style={{ scrollSnapType: 'x mandatory' }}
+        >
           {projects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
+            <div key={project.slug} className="scroll-snap-align-start">
+              <ProjectCard project={project} index={index} />
+            </div>
           ))}
         </div>
       </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scroll-snap-align-start {
+          scroll-snap-align: start;
+        }
+      `,
+        }}
+      />
     </section>
   );
 };

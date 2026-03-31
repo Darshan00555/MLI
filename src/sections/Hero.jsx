@@ -101,7 +101,7 @@ const Hero = () => {
                   }}
                   className="text-gold-200 block pb-2 italic"
                 >
-                  Gurgaon's Most Sought-After Locations
+                  Gurugram's Most Sought-After Locations
                 </motion.span>
               </div>
             </h1>
