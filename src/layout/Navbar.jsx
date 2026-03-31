@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import Button from '../components/ui/Button';
-import { useBrochure } from '../context/BrochureContext';
 import { contactData } from '../data/contact';
 import { getLogoUrl } from '../lib/media';
 import { cn } from '../lib/utils';
@@ -23,7 +22,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { openBrochureModal } = useBrochure();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,12 +111,6 @@ const Navbar = () => {
 
           {/* Right Section - Desktop */}
           <div className="hidden items-center gap-4 lg:flex xl:gap-6">
-            <button
-              onClick={() => openBrochureModal()}
-              className="hover:text-gold-400 text-xs font-bold tracking-widest text-white uppercase transition-colors"
-            >
-              Brochure
-            </button>
             <a
               href={`tel:${contactData.phoneRaw}`}
               className="hover:text-gold-400 text-white transition-colors duration-300"
@@ -229,27 +221,6 @@ const Navbar = () => {
                     Explore Now
                   </Button>
                 </Link>
-                <button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    openBrochureModal();
-                  }}
-                  style={{
-                    width: '100%',
-                    padding: '0.875rem',
-                    borderRadius: '0.375rem',
-                    backgroundColor: '#ffffff',
-                    color: '#111827',
-                    fontWeight: 'bold',
-                    fontSize: '0.875rem',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Download Brochure
-                </button>
               </div>
             </div>
           </motion.div>
