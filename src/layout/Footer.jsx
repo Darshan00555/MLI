@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useBrochure } from '../context/BrochureContext';
 import { contactData } from '../data/contact';
 import { leadFormAction } from '../lib/forms';
 import { getLogoUrl } from '../lib/media';
@@ -78,6 +79,8 @@ const NewsletterForm = () => {
 
 /* ── Footer ── */
 const Footer = () => {
+  const { openBrochureModal } = useBrochure();
+
   return (
     <footer className="border-t border-neutral-200 bg-neutral-50 pt-10 pb-6 md:pt-16 md:pb-10">
       <div className="container mx-auto px-5 md:px-8">
@@ -86,7 +89,7 @@ const Footer = () => {
           <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
             {/* Brand Column */}
             <div className="w-full max-w-[280px]">
-              <img src="Vectorfile.svg" alt="MLI Logo" className="mb-3 h-14 w-auto" />
+              <img src="/Vectorfile.svg" alt="MLI Logo" className="mb-3 h-14 w-auto" />
               <p className="mb-4 text-sm leading-relaxed text-neutral-600">
                 Pioneering luxury real estate with a commitment to quality, innovation, and timeless
                 design.
@@ -122,6 +125,14 @@ const Footer = () => {
                   <FooterLink href="/about">About Us</FooterLink>
                   <FooterLink href="/projects">Projects</FooterLink>
                   <FooterLink href="/gallery">Gallery</FooterLink>
+                  <li>
+                    <button
+                      onClick={() => openBrochureModal()}
+                      className="hover:text-gold-600 text-sm text-neutral-600 transition-colors"
+                    >
+                      Download Brochure
+                    </button>
+                  </li>
                   <FooterLink href="/blogs">Blogs</FooterLink>
                   <FooterLink href="/contact">Contact</FooterLink>
                 </ul>

@@ -2,6 +2,7 @@
 import Button from '../components/ui/Button';
 import { Dialog, DialogContent, DialogTrigger } from '../components/ui/dialog';
 import VideoPlayer from '../components/ui/video-player';
+import { useBrochure } from '../context/BrochureContext';
 import { getImageUrl } from '../lib/media';
 
 import React, { useRef } from 'react';
