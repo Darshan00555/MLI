@@ -89,7 +89,13 @@ const Footer = () => {
           <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
             {/* Brand Column */}
             <div className="w-full max-w-[280px]">
-              <img src="/Vectorfile.svg" alt="MLI Logo" className="mb-3 h-14 w-auto" />
+              <Link to="/">
+                <img
+                  src={getLogoUrl()}
+                  alt="MLI Logo"
+                  className="mb-3 h-14 w-auto opacity-80 brightness-0 transition-opacity hover:opacity-100"
+                />
+              </Link>
               <p className="mb-4 text-sm leading-relaxed text-neutral-600">
                 Pioneering luxury real estate with a commitment to quality, innovation, and timeless
                 design.
