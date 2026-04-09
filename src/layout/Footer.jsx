@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useBrochure } from '../context/BrochureContext';
 import { contactData } from '../data/contact';
+import { projects } from '../data/projects';
 import { leadFormAction } from '../lib/forms';
 import { getLogoUrl } from '../lib/media';
 
@@ -150,9 +151,11 @@ const Footer = () => {
                   Projects
                 </h4>
                 <ul className="space-y-2">
-                  <FooterLink href="/projects/ireo-a1-01">IREO A1-01</FooterLink>
-                  <FooterLink href="/projects/ireo-a1-18">IREO A1-18</FooterLink>
-                  <FooterLink href="/projects/suncity-c-85">Suncity C-85</FooterLink>
+                  {projects.map((project) => (
+                    <FooterLink key={project.id} href={`/projects/${project.slug}`}>
+                      {project.title}
+                    </FooterLink>
+                  ))}
                 </ul>
               </div>
 
