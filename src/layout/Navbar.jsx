@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Button from '../components/ui/Button';
 import { contactData } from '../data/contact';
+import { projects } from '../data/projects';
 import { getLogoUrl } from '../lib/media';
 import { cn } from '../lib/utils';
 
@@ -84,24 +85,15 @@ const Navbar = () => {
                 {link.hasDropdown && (
                   <div className="invisible absolute top-full left-0 mt-2 w-48 translate-y-2 transform rounded-sm border border-neutral-100 bg-white opacity-0 shadow-xl transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                     <div className="py-2">
-                      <Link
-                        to="/projects/ireo-a1-01"
-                        className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
-                      >
-                        IREO A1-01
-                      </Link>
-                      <Link
-                        to="/projects/ireo-a1-18"
-                        className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
-                      >
-                        IREO A1-18
-                      </Link>
-                      <Link
-                        to="/projects/suncity-c-85"
-                        className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
-                      >
-                        Suncity C-85
-                      </Link>
+                      {projects.map((project) => (
+                        <Link
+                          key={project.id}
+                          to={`/projects/${project.slug}`}
+                          className="hover:text-gold-600 block px-4 py-2 text-sm text-neutral-600 transition-colors hover:bg-neutral-50"
+                        >
+                          {project.title}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
