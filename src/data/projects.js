@@ -23,6 +23,7 @@ export const projects = [
       'A perfect blend of privacy, security, and prime location.',
     ],
     ctaLabel: 'Book a Site Visit',
+    floorPlanPdf: '/3d/C-18 FURNITURE PLAN Ireo= A1-01.pdf',
   },
   {
     id: 2,
@@ -45,6 +46,7 @@ export const projects = [
       'Experience private, peaceful living in one of Gurugram’s most desirable neighborhoods.',
     ],
     ctaLabel: 'Book a Site Visit',
+    floorPlanPdf: '/3d/C-18 FURNITURE PLAN Ireo= A1-18.pdf',
   },
   {
     id: 3,
@@ -68,6 +70,7 @@ export const projects = [
       'Designed for those who value space, privacy, and a central Gurugram address.',
     ],
     ctaLabel: 'Book a Site Visit',
+    floorPlanPdf: '/3d/c-85- LAYOUT.pdf',
   },
   {
     id: 4,
@@ -81,7 +84,7 @@ export const projects = [
       'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852790/A_1502_Elevation_02.jpg_r8d5wh.jpg',
     modelImage:
       'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852788/A_1502_Elevation_01.jpg_zn81bx.jpg',
-    floorPlanPdf: '/project_pic/A-1502/A-15-FURNITURE PLAN-CIVIL PLAN.pdf',
+    floorPlanPdf: '/3d/A-15-02FURNITURE PLAN-CIVIL PLAN.pdf',
     galleryImages: [
       'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852788/A_1502_Elevation_01.jpg_zn81bx.jpg',
       'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852790/A_1502_Elevation_02.jpg_r8d5wh.jpg',
