@@ -177,15 +177,12 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-between gap-3 text-xs text-neutral-500 sm:flex-row">
           <p>© {new Date().getFullYear()} MLI. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-gold-500 transition-colors">
+            <Link to="/privacy" className="hover:text-gold-500 transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-gold-500 transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="hover:text-gold-500 transition-colors">
-              Sitemap
-            </a>
+            </Link>
+            <Link to="/terms" className="hover:text-gold-500 transition-colors">
+              Terms and Conditions
+            </Link>
           </div>
         </div>
       </div>
