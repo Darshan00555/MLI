@@ -140,7 +140,7 @@ const Footer = () => {
                       Download Brochure
                     </button>
                   </li>
-                  <FooterLink href="/blogs">Blogs</FooterLink>
+                  <FooterLink href="/blogs">Beyond the Plot</FooterLink>
                   <FooterLink href="/contact">Contact</FooterLink>
                 </ul>
               </div>

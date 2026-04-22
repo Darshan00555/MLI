@@ -1,57 +1,32 @@
-/* eslint-disable no-unused-vars */
-import Button from '../components/ui/Button';
+import BlogModal from '../components/BlogModal';
 import SectionTitle from '../components/ui/SectionTitle';
-import { getImageUrl } from '../lib/media';
+import { blogPosts as blogData } from '../data/blogs';
 
-import React from 'react';
+import React, { useState } from 'react';
 
-import { motion } from 'framer-motion';
 import { Calendar, User } from 'lucide-react';
 
-const blogs = [
-  {
-    id: 1,
-    title: 'Trends defining Luxury Real Estate in 2024',
-    date: 'Feb 10, 2025',
-    author: 'Admin',
-    image: getImageUrl('IMG_5408.webp'),
-    excerpt:
-      'Discover the architectural and interior design trends that are shaping the future of high-end living.',
-  },
-  {
-    id: 2,
-    title: 'Why South Delhi is the Ultimate Address',
-    date: 'Jan 28, 2025',
-    author: 'Admin',
-    image: getImageUrl('IMG_5409.webp'),
-    excerpt:
-      'Explore the heritage, connectivity, and lifestyle that make South Delhi the most coveted location.',
-  },
-  {
-    id: 3,
-    title: 'Sustainable Luxury: A New Era',
-    date: 'Jan 15, 2025',
-    author: 'Admin',
-    image: getImageUrl('IMG_5410.webp'),
-    excerpt:
-      'How green building practices are being integrated into ultra-luxury residential projects.',
-  },
-];
-
 const Blogs = () => {
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Use only first 3 for home section
+  const blogs = blogData.slice(0, 3);
+
+  const openBlog = (blog) => {
+    setSelectedBlog(blog);
+    setIsModalOpen(true);
+  };
+
   return (
     <section id="blogs" className="bg-neutral-50 py-20">
       <div className="container mx-auto px-6">
-        <SectionTitle title="Insights & News" subtitle="Our Blogs" />
+        <SectionTitle title="Insights & News" subtitle="Beyond the Plot" />
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog, index) => (
-            <motion.div
+          {blogs.map((blog) => (
+            <div
               key={blog.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group hover:shadow-gold-500/10 overflow-hidden rounded-sm border border-neutral-100 bg-white transition-shadow duration-300 hover:shadow-2xl"
             >
               <div className="relative h-64 overflow-hidden">
@@ -73,7 +48,7 @@ const Blogs = () => {
                   </div>
                   <div className="flex items-center">
                     <User className="text-gold-500 mr-2 h-3 w-3" />
-                    {blog.author}
+                    Admin
                   </div>
                 </div>
 
@@ -83,17 +58,19 @@ const Blogs = () => {
 
                 <p className="mb-6 text-sm leading-relaxed text-neutral-600">{blog.excerpt}</p>
 
-                <a
-                  href="#"
+                <button
+                  onClick={() => openBlog(blog)}
                   className="text-gold-600 decoration-gold-500 inline-flex items-center text-sm font-medium tracking-wider uppercase underline-offset-4 transition-colors group-hover:underline hover:text-neutral-900"
                 >
                   Read More
-                </a>
+                </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
+
+      <BlogModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} blog={selectedBlog} />
     </section>
   );
 };

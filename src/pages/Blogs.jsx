@@ -1,9 +1,11 @@
+import BlogModal from '../components/BlogModal';
+import { blogPosts } from '../data/blogs';
 import { getImageUrl } from '../lib/media';
 
 import React, { useState } from 'react';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, Calendar, ChevronRight, Clock, Search } from 'lucide-react';
+import { ArrowUpRight, Calendar, ChevronRight, Search } from 'lucide-react';
 
 const MotionDiv = motion.div;
 const MotionSpan = motion.span;
@@ -11,68 +13,6 @@ const MotionH1 = motion.h1;
 const MotionP = motion.p;
 
 // --- Data ---
-const blogPosts = [
-  {
-    id: 1,
-    title: 'The Renaissance of Art Deco in Modern High-Rises',
-    category: 'Design',
-    date: 'Feb 14, 2026',
-    readTime: '6 min read',
-    image: getImageUrl('IMG_5489.webp'),
-    excerpt:
-      'How contemporary architects are reviving the glamour of the 1920s with geometric patterns and bold materials.',
-    featured: true,
-  },
-  {
-    id: 2,
-    title: 'Biophilic Interiors: Bringing the Outdoors In',
-    category: 'Lifestyle',
-    date: 'Feb 10, 2026',
-    readTime: '4 min read',
-    image: getImageUrl('IMG_5487.webp'),
-    excerpt:
-      'Why plant-centric design is becoming a staple in luxury residences for wellness and tranquility.',
-  },
-  {
-    id: 3,
-    title: 'Smart Homes 2.0: Invisible Technology',
-    category: 'Technology',
-    date: 'Jan 28, 2026',
-    readTime: '5 min read',
-    image: getImageUrl('IMG_5491.webp'),
-    excerpt:
-      'The future of automation is not about screens, but about seamless, intuitive environments.',
-  },
-  {
-    id: 4,
-    title: "Investing in South Delhi's Golden Quadrant",
-    category: 'Market',
-    date: 'Jan 15, 2026',
-    readTime: '8 min read',
-    image: getImageUrl('IMG_5492.webp'),
-    excerpt:
-      "An analysis of property value appreciation in the capital's most exclusive neighborhoods.",
-  },
-  {
-    id: 5,
-    title: 'Minimalism vs. Maximalism: Finding Balance',
-    category: 'Design',
-    date: 'Jan 02, 2026',
-    readTime: '5 min read',
-    image: getImageUrl('IMG_5493.webp'),
-    excerpt: 'Curating spaces that feel personal and curated without clutter.',
-  },
-  {
-    id: 6,
-    title: 'The Ultimate Guide to Penthouse Living',
-    category: 'Lifestyle',
-    date: 'Dec 20, 2025',
-    readTime: '7 min read',
-    image: getImageUrl('IMG_5495.webp'),
-    excerpt: 'From private elevators to rooftop terraces, what defines true sky-high luxury.',
-  },
-];
-
 const categories = ['All', 'Design', 'Lifestyle', 'Market', 'Technology'];
 
 // --- Components ---
@@ -109,7 +49,7 @@ const BlogHero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-6 font-serif text-6xl text-white md:text-8xl lg:text-9xl"
         >
-          The Journal
+          Beyond the Plot
         </MotionH1>
         <MotionP
           style={{ y: y2 }}
@@ -126,7 +66,7 @@ const BlogHero = () => {
   );
 };
 
-const FeaturedPost = ({ post }) => {
+const FeaturedPost = ({ post, onReadMore }) => {
   return (
     <section className="py-20">
       <div className="container mx-auto px-6">
@@ -170,7 +110,10 @@ const FeaturedPost = ({ post }) => {
                 {post.excerpt}
               </p>
 
-              <div className="group/btn flex cursor-pointer items-center text-sm font-medium tracking-widest text-white uppercase">
+              <div
+                onClick={onReadMore}
+                className="group/btn flex cursor-pointer items-center text-sm font-medium tracking-widest text-white uppercase"
+              >
                 Read Full Article
                 <span className="group-hover/btn:bg-gold-500 ml-4 rounded-full bg-white/10 p-3 transition-all duration-300 group-hover/btn:ml-6 group-hover/btn:rotate-45 group-hover/btn:text-neutral-900">
                   <ArrowUpRight className="h-5 w-5" />
@@ -184,7 +127,7 @@ const FeaturedPost = ({ post }) => {
   );
 };
 
-const BlogCard = ({ post, index }) => {
+const BlogCard = ({ post, index, onClick }) => {
   return (
     <MotionDiv
       initial={{ opacity: 0, y: 50 }}
@@ -220,10 +163,13 @@ const BlogCard = ({ post, index }) => {
         </p>
 
         <div className="flex items-center justify-between border-t border-neutral-100 pt-6">
-          <span className="text-gold-600 flex items-center text-sm font-medium underline-offset-4 group-hover:underline">
+          <button
+            onClick={onClick}
+            className="text-gold-600 flex items-center text-sm font-medium underline-offset-4 group-hover:underline"
+          >
             Read Story{' '}
             <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </span>
+          </button>
         </div>
       </div>
     </MotionDiv>
@@ -258,6 +204,9 @@ const Newsletter = () => {
 
 const Blogs = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const filteredPosts =
     activeCategory === 'All'
       ? blogPosts.filter((post) => !post.featured)
@@ -265,11 +214,18 @@ const Blogs = () => {
 
   const featuredPost = blogPosts.find((post) => post.featured);
 
+  const openBlog = (blog) => {
+    setSelectedBlog(blog);
+    setIsModalOpen(true);
+  };
+
   return (
     <main className="min-h-screen bg-neutral-50">
       <BlogHero />
 
-      {activeCategory === 'All' && featuredPost && <FeaturedPost post={featuredPost} />}
+      {activeCategory === 'All' && featuredPost && (
+        <FeaturedPost post={featuredPost} onReadMore={() => openBlog(featuredPost)} />
+      )}
 
       <section className="bg-neutral-50 py-12" id="articles">
         <div className="container mx-auto px-6">
@@ -304,7 +260,7 @@ const Blogs = () => {
           {/* Grid */}
           <MotionDiv layout className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredPosts.map((post, index) => (
-              <BlogCard key={post.id} post={post} index={index} />
+              <BlogCard key={post.id} post={post} index={index} onClick={() => openBlog(post)} />
             ))}
           </MotionDiv>
 
@@ -317,6 +273,8 @@ const Blogs = () => {
       </section>
 
       <Newsletter />
+
+      <BlogModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} blog={selectedBlog} />
     </main>
   );
 };

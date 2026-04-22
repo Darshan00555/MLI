@@ -15,7 +15,7 @@ const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Gallery', path: '/gallery' },
   { name: 'Projects', path: '/projects', hasDropdown: true },
-  { name: 'Blogs', path: '/blogs' },
+  { name: 'Beyond the Plot', path: '/blogs' },
   { name: 'About Us', path: '/about' },
   { name: 'Contact Us', path: '/contact' },
 ];
