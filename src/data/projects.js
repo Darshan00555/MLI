@@ -7,13 +7,14 @@ export const projects = [
     title: 'IREO A1-01',
     location: 'Sector 60, Gurugram',
     category: 'Builder Floors',
-    coverImage: '/Elevation.jpg.webp',
-    heroImage: getImageUrl('IMG_5400.webp'),
-    modelImage: '/Elevation.jpg.jpeg',
+    coverImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776837658/Ireo_A1-01_c6aqsc.jpg',
+    heroImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776837658/Ireo_A1-01_c6aqsc.jpg',
+    modelImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776837658/Ireo_A1-01_c6aqsc.jpg',
     galleryImages: [
-      getImageUrl('IMG_5402.webp'),
-      getImageUrl('IMG_5476.webp'),
-      getImageUrl('IMG_5477.webp'),
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776837658/Ireo_A1-01_c6aqsc.jpg',
     ],
     description:
       'Located in the exclusive Ireo Plots, Sector 60, this nearly ready builder floor offers private, gated lane living with modern design and premium finishes.',
@@ -51,13 +52,14 @@ export const projects = [
     title: 'Suncity C-85',
     location: 'Sector 54, Gurugram',
     category: 'Builder Floors',
-    coverImage: '/scene-1.jpg.webp',
-    heroImage: getImageUrl('IMG_5411.webp'),
-    modelImage: '/scene-1.jpg.webp',
+    coverImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852875/Elevation.jpgSuncityC85_fphc0q.jpg',
+    heroImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852875/Elevation.jpgSuncityC85_fphc0q.jpg',
+    modelImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852875/Elevation.jpgSuncityC85_fphc0q.jpg',
     galleryImages: [
-      getImageUrl('IMG_5412.webp'),
-      getImageUrl('IMG_5413.webp'),
-      getImageUrl('IMG_5479.webp'),
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852875/Elevation.jpgSuncityC85_fphc0q.jpg',
     ],
     description:
       'Located in the prime neighborhood of Suncity, Sector 54, this ready builder floor offers refined living with seamless connectivity to Golf Course Road.',
@@ -73,13 +75,17 @@ export const projects = [
     title: 'IREO A-1502',
     location: 'Sector 60, Gurugram',
     category: 'Builder Floors',
-    coverImage: '/project_pic/A-1502/A_1502_Elevation_01.jpg.webp',
-    heroImage: '/project_pic/A-1502/A_1502_Elevation_02.jpg.webp',
-    modelImage: '/project_pic/A-1502/A_1502_Elevation_01.jpg.webp',
+    coverImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852788/A_1502_Elevation_01.jpg_zn81bx.jpg',
+    heroImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852790/A_1502_Elevation_02.jpg_r8d5wh.jpg',
+    modelImage:
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852788/A_1502_Elevation_01.jpg_zn81bx.jpg',
     floorPlanPdf: '/project_pic/A-1502/A-15-FURNITURE PLAN-CIVIL PLAN.pdf',
     galleryImages: [
-      '/project_pic/A-1502/A_1502_Elevation_01.jpg.webp',
-      '/project_pic/A-1502/A_1502_Elevation_02.jpg.webp',
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852788/A_1502_Elevation_01.jpg_zn81bx.jpg',
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852790/A_1502_Elevation_02.jpg_r8d5wh.jpg',
+      'https://res.cloudinary.com/de8be7dqu/image/upload/v1776852787/DINING_AREA_1502.jpg_1_cj9aq9.jpg',
     ],
     description:
       'A thoughtfully designed builder floor in the prestigious Ireo Plots, Sector 60, featuring a spacious layout, premium finishes, and private gated living.',

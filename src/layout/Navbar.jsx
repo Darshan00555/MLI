@@ -139,7 +139,7 @@ const Navbar = () => {
               position: 'fixed',
               inset: 0,
               zIndex: 1100,
-              backgroundColor: '#111827',
+              backgroundColor: '#0a0a0a',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -159,7 +159,7 @@ const Navbar = () => {
                 right: '1.5rem',
                 color: '#ffffff',
                 background: 'none',
-                border: '1px solid rgba(255,255,255,0.3)',
+                border: '1px solid rgba(184, 141, 59, 0.4)',
                 borderRadius: '0.375rem',
                 padding: '0.375rem',
                 cursor: 'pointer',
@@ -190,15 +190,17 @@ const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   style={{
                     display: 'block',
-                    padding: '1rem 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.12)',
-                    fontSize: '1.375rem',
-                    fontFamily: 'Georgia, serif',
-                    color: '#ffffff',
+                    padding: '1.25rem 0',
+                    borderBottom: '1px solid rgba(184, 141, 59, 0.2)',
+                    fontSize: '1.5rem',
+                    fontFamily: 'Montserrat, sans-serif',
+                    color: isActive(link.path) ? '#b88d3b' : '#ffffff',
                     textDecoration: 'none',
-                    letterSpacing: '0.05em',
-                    transition: 'color 0.2s',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    transition: 'all 0.3s ease',
                   }}
+                  className="hover:text-gold-500"
                 >
                   {link.name}
                 </Link>
